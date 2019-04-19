@@ -59,6 +59,12 @@ button:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 35px;
+    
+}
+
+.show-img img {
+    border-radius: 5px;
+    min-height: 350px;
 }
 
 div.card {
@@ -90,4 +96,22 @@ div.card {
 .home {
     color: rgb(182, 84, 182);
 
+}
+
+.form-holder {
+    display: flex;
+    justify-content: center;
+    }
+
+.bigger {
+    min-width: 500px;
+    margin-top: 75px;
+}
+
+.form-control {
+margin-bottom: 15px;
+}
+
+.editSubmit {
+    margin-top: 40px;
 }

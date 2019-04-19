@@ -13,19 +13,34 @@
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/photos">
         <img src="http://www.stickpng.com/assets/thumbs/584abf432912007028bd9337.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        PhotoAPP
+        PhotoAPP<span>"where your photos are located on the internet"</span>
     </a>
 </nav>
 
-    <h1>Edit <%=photo.name%></h1>
+
+<div class="form-holder">
+    <div class="bigger">
     <form action="/photos/<%=id%>?_method=PUT" method="POST">
-        <p>User Name: <input type="text" name="username" value="<%=photo.username%>"></p>
-        <p>Title: <input type="text" name="title" value="<%=photo.title%>"></p>
-        <p>Photo Url: <input type="text" name="url" value="<%=photo.url%>"></p>
-        <p>Info: <input type="text" name="info" value="<%=photo.info%>"></p>
-        <button type="submit">Submit Changes</button>
-        <a class="homeButton" href="/team"><button>Home</button></a>
+    <div class="form-group">
+        <label for="formGroupExampleInput">User Name</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="username" value="<%=photo.username%>>
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="title" value="<%=photo.title%>">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput3">Photo Url</label>
+        <input type="text" class="form-control" id="formGroupExampleInput3" name="url" value="<%=photo.url%>">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput4">Info</label>
+        <input type="text" class="form-control" id="formGroupExampleInput4" name="info" value="<%=photo.info%>">
+    </div>
+    <button class="editSubmit" type="submit">Submit Changes</button>
     </form>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
