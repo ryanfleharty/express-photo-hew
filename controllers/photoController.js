@@ -78,7 +78,15 @@ router.put('/:id', (req, res) => {
 });
 
 // delete route
-
+router.delete('/:id', (req, res) => {
+    Photo.findByIdAndDelete(req.params.id, (err, photoToDelete) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.redirect('/photos')
+        }
+    })
+});
 
 
 
