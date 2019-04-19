@@ -17,13 +17,34 @@
     </a>
 </nav>
 
+
     <h1>Add a New Photo</h1>
+    
+
+
+    <div class="form-holder">
+    <div class="new-bigger">
     <form action="/photos" method="POST">
-        <p>Username <input type='text' name='username'></p>
-        <p>Url <input type='text' name='url'></p>
-        <p>Info <input type='text' name='info'></p>
-        <button type='submit'>Submit</button>
+    <div class="form-group">
+        <label for="formGroupExampleInput">User Name</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="username">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Title</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="title">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput3">Photo Url</label>
+        <input type="text" class="form-control" id="formGroupExampleInput3" name="url">
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput4">Info</label>
+        <input type="text" class="form-control" id="formGroupExampleInput4" name="info">
+    </div>
+    <button class="editSubmit" type="submit">Submit</button>
     </form>
+    </div>
+</div>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

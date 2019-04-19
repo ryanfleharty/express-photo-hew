@@ -108,6 +108,11 @@ div.card {
     margin-top: 75px;
 }
 
+.new-bigger {
+    min-width: 500px;
+
+}
+
 .form-control {
 margin-bottom: 15px;
 }
