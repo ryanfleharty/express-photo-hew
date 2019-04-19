@@ -8,13 +8,13 @@
     <title>Photo Index Page</title>
 </head>
 <body>
-    <div class='container-fluid'>
+    <div class="container-fluid">
         <h1>Photo Index page</h1>
         <ul>
             <% for(let i = 0; i < photos.length; i++){ %>
                 <li>
-                    The <a href="/photos/<%=photos[i]._id%>"><%=photos[i].title; %></a> is about <%=photos[i].topic; %>.
-                    <a href="/photos/<%=photos[i]._id; %>/edit">Edit</a>
+                    The <a href="/photos/<%=photos[i]._id%>"><%=photos[i].title %></a> is about <%=photos[i].topic %>.
+                    <a href="/photos/<%=photos[i]._id%>/edit">Edit</a>
                     <form action="/photos/<%=photos[i]._id%>?_method=DELETE" method="POST">
                       <button type="submit">Delete</button>
                     </form>

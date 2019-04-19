@@ -74,7 +74,7 @@ router.get('/:id', (req, res) => {
     } else {
       console.log(foundPhoto);
       res.render('photoShow.ejs', {
-        photos: foundPhoto,
+        photo: foundPhoto,
       });
     }
   });

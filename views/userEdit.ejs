@@ -8,14 +8,14 @@
     <title>User Edit Page</title>
 </head>
 <body>
-  <div class='container-fluid'>
+  <div class="container-fluid">
       <h1>User Edit Page</h1>
       <form action="/users/<%=user._id%>?_method=PUT" method="POST">
-        Name: <input type="text" name="name" value='<%=user.name%>'><br/>
-        Age: <input type="text" name="age" value='<%=user.age%>'><br/>
-        Works: <input type="text" name="works" value='<%=user.works%>'><br/>
-        Profile Image: <input type="text" name="profileImage" value='<%=user.profileImage%>'><br/>
-      <button type="submit">Edit User</button>
+        Name: <input type="text" name="name" value="<%=user.name%>"><br/>
+        Age: <input type="text" name="age" value="<%=user.age%>"><br/>
+        Photos: <input type="text" name="photos" value="<%=user.photos%>"><br/>
+        Profile Image: <input type="text" name="profileImage" value="<%=user.profileImage%>"><br/>
+      <button type="submit">Submit Edits</button>
     </form>
   </div>
 </body>

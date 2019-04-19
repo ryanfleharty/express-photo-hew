@@ -8,13 +8,17 @@
     <title>User Show Page</title>
 </head>
 <body>
-    <div class='container-fluid'>
+    <div class="container-fluid">
         <h1>User Show Page</h1>  
             <p>
-            Hello! My name is <%= user.name%> and I am <%=user.age%> years old.<br>
-            Here you can find some of my work: <%=user.works%><br>
-            Img: <img src='<%=user.profileImage%>'>
+                Hello! My name is <%= user.name%> and I am <%=user.age%> years old.<br>
+                Here you can find some of my photos: <%=user.photos%><br>
+                Profile Image: <img src='<%=user.profileImage%>'>
             </p>
+            <a href="/users/<%=user._id%>/edit">Edit</a>
+            <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

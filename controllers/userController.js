@@ -76,7 +76,7 @@ router.get('/:id', (req, res) => {
     } else {
       console.log(foundUser);
       res.render('userShow.ejs', {
-        users: foundUser,
+        user: foundUser,
       });
     }
   });

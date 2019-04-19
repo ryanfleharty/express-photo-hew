@@ -8,13 +8,13 @@
     <title>User Index Page</title>
 </head>
 <body>
-    <div class='container-fluid'>
+    <div class="container-fluid">
         <h1>User Index Page</h1>
         <ul>
             <% for(let i = 0; i < users.length; i++){ %>
                 <li>
-                    The <a href="/users/<%=users[i]._id%>"><%=users[i].name; %></a> is  <%=users[i].age; %>.
-                    <a href="/users/<%=users[i]._id; %>/edit">Edit</a>
+                    The <a href="/users/<%=users[i]._id%>"><%=users[i].name%></a> is  <%=users[i].age%>.
+                    <a href="/users/<%=users[i]._id%>/edit">Edit</a>
                     <form action="/users/<%=users[i]._id%>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
