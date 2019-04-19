@@ -17,6 +17,19 @@ router.get('/', (req, res)=> {
     })
 });
 
+// new route
+router.get('/new', (req, res) => {
+    Photo.findById(req.params.id, (err, newPhotoUpload) => {
+        if (err){
+            res.send(err);
+        } else {
+            res.render('photo/new.ejs')
+        }    
+    })
+});
+
+
+
 
 
 module.exports = router;
