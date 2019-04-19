@@ -1,21 +1,21 @@
-const mongoose = rewuire('mongoose');
+const mongoose = require('mongoose');
 
-const connectionstring = 'mongodb://localhost/photo'
+const connectionString = 'mongodb://localhost/photo';
 
 mongoose.connect(connectionString, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${connectionString}`)
+  console.log(`Mogoose connected to ${connectionString}`);
 });
 
-mongoose.connection.on('disconnected', (err) => {
-    console.log(`Mongoose disconnected from ${connectionString}`);
+mongoose.connection.on('disconnected', () => {
+  console.log(`Mogoose disconnected from ${connectionString}`);
 });
 
 mongoose.connection.on('error', (err) => {
-    console.log(`Mongoose error: ${err}`);
+  console.log(`Mogoose error: ${err}`);
 });

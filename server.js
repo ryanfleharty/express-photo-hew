@@ -13,6 +13,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/photos', photoController);
 
+
 // Possibly how I make / get to the homepage
 
 // app.get('/', (req, res) => {
