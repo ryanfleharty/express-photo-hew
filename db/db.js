@@ -24,3 +24,10 @@ mongoose.connection.on('disconnected', () => {
 });
 
 
+// const photoData = require('../populatePhotos');
+
+// PhotoModel.collection.insertMany(photoData, (err, data) => {
+//     console.log('added data');
+//     mongoose.connection.close(); 
+// });
+

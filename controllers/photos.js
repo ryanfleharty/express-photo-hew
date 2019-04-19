@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Photo = require('../models/photos');
 
-//console.log(Photo);
+
+// ROUTES 
+
 // INDEX ROUTE
 router.get('/', (req, res) => {
     Photo.find({}, (error, returnedPhotos) => {
@@ -43,14 +45,48 @@ router.delete('/:id', (req, res) => {
             res.redirect('/photos');
         }
     })
-})
+});
 
 // EDIT ROUTE
+router.get('/:id/edit', (req, res) => {
+    Photo.findById(req.params.id, (error, foundPhoto) =>{
+        if(error){
+            console.log(error);
+        } else {
+            res.render('edit.ejs', {
+                photo: foundPhoto,
+                id: req.params.id
+            })
+        }
+    })
+});
 
 // UPDATE ROUTE
+router.put('/:id', (req, res) => {
+    Photo.findOneAndUpdate({_id: req.params.id}, req.body, (error, foundPhoto) => {
+        if(error) {
+            console.log(error);
+        } else {
+            foundPhoto = req.body;
+            res.redirect('/photos');
+            console.log(foundPhoto);
+        }
+    })
+})
+
 
 // SHOW ROUTE
-
+router.get('/:id', (req, res) => {
+    Photo.findById(req.params.id, (error, foundPhoto) =>{
+        if(error){
+            console.log(error)
+        } else {
+            res.render('show.ejs', {
+                photo: foundPhoto
+            })
+        }
+    })
+})
 
 
 

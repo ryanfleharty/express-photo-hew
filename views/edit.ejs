@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Edit</title>
+</head>
+<body>
+    <h1>Edit <%=photo.name%></h1>
+    <form action="/photos/<%=id%>?_method=PUT" method="POST">
+        <p>User Name: <input type="text" name="username" value="<%=photo.username%>"></p>
+        <p>Title: <input type="text" name="title" value="<%=photo.title%>"></p>
+        <p>Photo Url: <input type="text" name="url" value="<%=photo.url%>"></p>
+        <p>Info: <input type="text" name="info" value="<%=photo.info%>"></p>
+        <button type="submit">Submit Changes</button>
+        <a class="homeButton" href="/team"><button>Home</button></a>
+    </form>
+</body>
+</html>

@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 app.use('/photos', photosController);
 
+app.use(express.static('public'));
 
 
 app.listen(3000, () => {
