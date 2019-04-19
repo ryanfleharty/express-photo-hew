@@ -65,6 +65,20 @@ router.get('/:id/edit', (req, res) => {
     })
 });
 
+// update route
+router.put('/:id', (req, res) => {
+    Photo.findByIdAndUpdate(req.params.id, req.body, (err, editedPhoto) => {
+        if (err) {
+            res.send(err);
+        } else {
+            editedPhoto = req.body;
+            res.redirect('/photos')
+        }
+    })
+});
+
+// delete route
+
 
 
 
