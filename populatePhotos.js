@@ -21,7 +21,7 @@ const photos = [
         username: 'inNOut',
         url: 'https://www.checkers.com/wp-content/uploads/2017/03/Burgers_Featured-600x600.jpg',
         info: 'Here is a photo of a burger',
-        title: 'Waffles'
+        title: 'Burger'
     },
 ];
 

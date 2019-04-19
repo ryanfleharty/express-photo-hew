@@ -2,6 +2,92 @@ body {
     background-color: gray;
 }
 
+h1 {
+    text-align: center;
+    padding: 30px;
+}
+
 img {
     max-height: 200px;
+}
+
+span {
+    color: gray;
+    font-family: fantasy;
+    margin-left: 20px;
+    font-size: 15px;
+
+}
+
+button {
+    border-radius: 10px;
+}
+
+button:hover {
+    border-color: rgb(182, 84, 182);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-container a {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.flex-container button {
+    width: 100%;
+    
+}
+
+.flex-container-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.show-flex {
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+}
+
+.show-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+div.card {
+    border-radius: 3px;
+    max-width: 230px;
+    min-width: 230px;
+    margin: 10px;
+}
+
+.card-img-top {
+    height: 50%;
+}
+
+.cardHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.jumbotron-fluid {
+    height: 300px;
+}
+
+.navbar {
+    opacity: .8;
+}
+
+.home {
+    color: rgb(182, 84, 182);
+
 }
