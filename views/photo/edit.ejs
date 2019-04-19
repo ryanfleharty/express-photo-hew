@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+    <div>
+        <h1>Edit Photo</h1>
+        <form action="/photos/<%= photo._id %>%>" method="post">
+            <div>*Photo URL <input type="text" name="url" value="<%= photo.url %>"></div>
+            <div>*Username <input type="text" name="username" value="<%= photo.username %>"></div>
+            <div>Photo Title <input type="text" name="title" value="<%= photo.title %>"></div>
+            <div>Photo Description <input type="text" name="description" value="<%= photo.description %>"></div>
+            <div><button class="btn" type="submit">Submit Edits</button></div>
+        </form>
+        *required
+    </div>
+</div>
+</body>
+</html>

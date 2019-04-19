@@ -50,7 +50,20 @@ router.get('/:id', (req, res) => {
             })
         }  
     })
-})
+});
+
+// edit route
+router.get('/:id/edit', (req, res) => {
+    Photo.findById(req.params.id, (err, photoToEdit) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render('photo/edit.ejs', {
+                photo: photoToEdit,
+            });
+        }
+    })
+});
 
 
 
