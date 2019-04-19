@@ -28,6 +28,17 @@ router.get('/new', (req, res) => {
     })
 });
 
+// create route
+router.post('/', (req, res) => {
+    Photo.create(req.body, (err, newPhotoUpload) => {
+        if (err){
+            res.send(err);
+        } else {
+            res.redirect('/photos')
+        }  
+    })
+});
+
 
 
 
