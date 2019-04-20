@@ -23,6 +23,7 @@
     <div class="form-holder">
     <div class="new-bigger">
     <form action="/photos" method="POST">
+    
     <div class="form-group">
         <label for="formGroupExampleInput">User Name</label>
         <select name="name">
@@ -30,17 +31,18 @@
             <option value="<%=users[i]._id%>"><%=users[i].name%></option>
         <%}%>
     </div>
+
     <div class="form-group">
-        <label for="formGroupExampleInput2">Title</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" name="title">
+
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="title" placeholder="Title">
     </div>
     <div class="form-group">
-        <label for="formGroupExampleInput3">Photo Url</label>
-        <input type="text" class="form-control" id="formGroupExampleInput3" name="url">
+
+        <input type="text" class="form-control" id="formGroupExampleInput3" name="url" placeholder="image url">
     </div>
     <div class="form-group">
-        <label for="formGroupExampleInput4">Info</label>
-        <input type="text" class="form-control" id="formGroupExampleInput4" name="info">
+
+        <input type="text" class="form-control" id="formGroupExampleInput4" name="info" placeholder="photo info">
     </div>
     <button class="editSubmit" type="submit">Submit</button>
     </form>

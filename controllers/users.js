@@ -88,6 +88,8 @@ router.get('/:id', (req, res) => {
         if(error){
             res.send(error);
         } else {
+            Photo.findById()
+            console.log(userFromDatabase);
             res.render('users/show.ejs', {
                 user: userFromDatabase
             })

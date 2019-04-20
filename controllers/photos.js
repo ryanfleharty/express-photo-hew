@@ -34,26 +34,53 @@ router.get('/new', (req, res) => {
 
 // CREATE ROUTE
 router.post('/', (req, res) => {
-    Photo.create(req.body, (error, newPhoto) => {
-        if (error){
-            console.log(error)
-        } else {
-            console.log(newPhoto);
-            res.redirect('/photos')
-        }
-    })
+    Photo.create(req.body, (err, newPhoto) => {
+        console.log(`created a new photo for user id: ${req.body.name}`);
+        User.findById(req.body.name, (error, foundUser) => {
+            if(error){
+                res.send(error);
+            } else {
+                foundUser.photos.push(newPhoto);
+                console.log(newPhoto);
+                foundUser.save((error, savedUser) => {
+                    console.log(savedUser);
+                    res.redirect('/photos');
+                })
+            }
+        })
+    });
 });
 
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
-    Photo.findByIdAndDelete(req.params.id, (error, deletedPhoto) => {
-        if(error){
-            console.log(error);
+    
+    Photo.findByIdAndDelete(req.params.id, (error, deletedPhotoFromDb) => {
+        if (error){
+            res.send(error)
         } else {
-            console.log(deletedPhoto);
-            res.redirect('/photos');
+            User.findOne({'photos': req.params.id}, (error, foundUser) => {
+                if(error){
+                    res.send(error);
+                } else {
+                    foundUser.photos.remove(req.params.id);
+                    foundUser.save((error, updatedUser) => {
+                        console.log(updatedUser);
+                        res.redirect('/photos')
+                    })
+                }
+            })
         }
-    })
+    });
+    
+    
+    // Photo.findByIdAndDelete(req.params.id, (error, deletedPhoto) => {
+    //     if(error){
+    //         console.log(error);
+    //     } else {
+    //         console.log(deletedPhoto);
+    //         res.redirect('/photos');
+    //     }
+    // })
 });
 
 // EDIT ROUTE
