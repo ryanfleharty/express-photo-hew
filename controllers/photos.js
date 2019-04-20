@@ -124,10 +124,13 @@ router.get('/:id', (req, res) => {
         if(error){
             console.log(error)
         } else {
-            res.render('photos/show.ejs', {
-                photo: foundPhoto,
-                id: req.params.id
+            User.findOne({'photos': req.params.id}, (error, returnedUser) => {
+                res.render('photos/show.ejs', {
+                    photo: foundPhoto,
+                    user: returnedUser
+                })
             })
+
         }
     })
 })

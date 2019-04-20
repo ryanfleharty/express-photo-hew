@@ -17,16 +17,13 @@
     </a>
     </nav>
 
-
-
-
     <h1><%=photo.title%></h1>
     <div class="show-img"><img src="<%=photo.url%>"></div>
     <div class="show-flex">
     <div class='flex-container-column'>
-        <div>Username: <%=photo.username%></div>
+        <div>Artist: <%=user.name%></div>
         <div>"The artist wants you to know": <%=photo.info%></p></div>
-        <a href="/photos/<%=id%>/edit"><button>Edit/Delete</button></a>
+        <a href="/photos/<%=photo._id%>/edit"><button>Edit/Delete</button></a>
     </div>
     </div>
 
