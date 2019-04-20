@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Cat = require('../models/Photo');
 
 // INDEX
 router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
       res.send(err);
     } else {
       console.log(foundUsers);
-      res.render('userIndex.ejs', {
+      res.render('users/index.ejs', {
         users: foundUsers,
       });
     }
@@ -21,7 +22,7 @@ router.get('/', (req, res) => {
 
 // NEW
 router.get('/new', (req, res) => {
-  res.render('userNew.ejs');
+  res.render('users/new.ejs');
 });
 
 // CREATE
@@ -46,7 +47,7 @@ router.get('/:id/edit', (req, res) => {
       res.send(err);
     } else {
       console.log(foundUser);
-      res.render('userEdit.ejs', {
+      res.render('users/edit.ejs', {
         user: foundUser,
       });
     }
@@ -75,7 +76,7 @@ router.get('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(foundUser);
-      res.render('userShow.ejs', {
+      res.render('users/show.ejs', {
         user: foundUser,
       });
     }

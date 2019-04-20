@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Photo = require('../models/Photo');
+const User = require('../models/User');
 
 // INDEX
 router.get('/', (req, res) => {
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
       res.send(err);
     } else {
       console.log(foundPhotos);
-      res.render('photoIndex.ejs', {
+      res.render('photos/index.ejs', {
         photos: foundPhotos,
       });
     }
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 
 // NEW
 router.get('/new', (req, res) => {
-  res.render('photoNew.ejs');
+  res.render('photos/new.ejs');
 });
 
 // CREATE
@@ -36,6 +37,46 @@ router.post('/', (req, res) => {
   });
 });
 
+const convertMonthTextToNumStr = (month) => {
+  switch (month) {
+    case 'JAN':
+      month = '01';
+      break;
+    case 'FEB':
+      month = '02';
+      break;
+    case 'MAR':
+      month = '03';
+      break;
+    case 'APR':
+      month = '04';
+      break;
+    case 'MAY':
+      month = '05';
+      break;
+    case 'JUN':
+      month = '06';
+      break;
+    case 'JUL':
+      month = '07';
+      break;
+    case 'AUG':
+      month = '08';
+      break;
+    case 'SEP':
+      month = '09';
+      break;
+    case 'OCT':
+      month = '10';
+      break;
+    case 'NOV':
+      month = '11';
+      break;
+    default: // DEC
+      month = '12';
+  }
+  return month;
+};
 
 // EDIT
 router.get('/:id/edit', (req, res) => {
@@ -45,8 +86,15 @@ router.get('/:id/edit', (req, res) => {
       res.send(err);
     } else {
       console.log(foundPhoto);
-      res.render('photoEdit.ejs', {
+
+      const month = convertMonthTextToNumStr(foundPhoto.createdDate.toString().slice(4, 7));
+      const day = foundPhoto.createdDate.toString().slice(8, 10);
+      const year = foundPhoto.createdDate.toString().slice(11, 15);
+      const datePickerFormat = `${year}-${month}-${day}`;
+
+      res.render('photos/edit.ejs', {
         photo: foundPhoto,
+        datePickerFormat,
       });
     }
   });
@@ -73,7 +121,7 @@ router.get('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(foundPhoto);
-      res.render('photoShow.ejs', {
+      res.render('photos/show.ejs', {
         photo: foundPhoto,
       });
     }
