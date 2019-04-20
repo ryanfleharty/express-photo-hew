@@ -10,7 +10,7 @@ const User = require('../models/users');
 router.get('/', (req, res) => {
     Photo.find({}, (error, returnedPhotos) => {
         if(error){
-            console.log(error);
+            res.send(error);
         } else {
             res.render('photos/index.ejs', {
                 allPhotos: returnedPhotos
@@ -19,9 +19,17 @@ router.get('/', (req, res) => {
     })
 });
 
-// NEW ROUTE
+// NEW ROUTE - ask db for the users so you can use them on the new page
 router.get('/new', (req, res) => {
-    res.render('photos/new.ejs')
+    User.find({}, (error, allUsers) => {
+        if(error) {
+            res.send(error)
+        } else {
+            res.render('photos/new.ejs', {
+                users: allUsers
+            })
+        }
+    })
 });
 
 // CREATE ROUTE

@@ -26,7 +26,7 @@ mongoose.connection.on('disconnected', () => {
 
 
 
-//PHOTO BASE POPULATION
+// PHOTO BASE POPULATION
 // const photoData = require('../populatePhotos');
 
 // PhotoModel.collection.insertMany(photoData, (err, data) => {
