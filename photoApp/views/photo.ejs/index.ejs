@@ -8,12 +8,12 @@
 </head>
 <body>
 <a href="/">GO SUPER HOME</a>
-<a href="/cats/new">MAKE A NEW CAT</a>
-    <% catsOnTheTemplate.forEach((cat)=>{ %>
+<a href="/photo/new">MAKE A NEW photo</a>
+    <% photosOnTheTemplate.forEach((photo)=>{ %>
         <li>
-            <a href="/cats/<%=cat._id%>"><%=cat.name%></a>
-            <p>This cat is <%=cat.age%> years old</p>
-            <form action="/cats/<%=cat._id%>?_method=DELETE" method="POST">
+            <a href="/photo/<%=photo._id%>"><%=photo.name%></a>
+            <p>This is a photo of<%=photo.subject%> called <%=photo.title%> by <%=photographer.name%></p>
+            <form action="/photo/<%=photo._id%>?_method=DELETE" method="POST">
                 <button>DELETE</button>
             </form>
         </li>

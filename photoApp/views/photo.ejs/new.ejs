@@ -8,16 +8,15 @@
 </head>
 <body>
 <a href="/">GO SUPER HOME</a>
-<a href="/cats">CATS GO HOME</a>
-     <form action="/cats" method="POST">
-        owner: <select name="userId">
-        <% for (let i = 0; i < usersOnTemplate.length; i++) {%>
-          <option value="<%=usersOnTemplate[i]._id%>"><%=usersOnTemplate[i].username%></option>
+<a href="/photo">photo GO HOME</a>
+     <form action="/photo" method="POST">
+        owner: <select name="photographerId">
+        <% for (let i = 0; i < photographer.length; i++) {%>
+          <option value="<%=photographer[i]._id%>"><%=photographer[i].name%></option>
 
           <%}%>
         </select><br/>
         name: <input type="text" name="name">
-        age: <input type="number" name="age">
         <input type="submit">
     </form>
 </body>

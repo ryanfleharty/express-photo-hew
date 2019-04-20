@@ -8,14 +8,14 @@
 </head>
 <body>
 <a href="/">GO HOME</a>
-<a href="/users">Go back to users Index</a>
-    <h1>Here is an enslaver of cats named <%= userOnTheTemplate.username %></h1>
+<a href="/photographer">Go back to photographers Index</a>
+    <h1>Here is an enslaver of souls named <%= photographer.name %></h1>
     <ul>
-        <h2>Here are <%=userOnTheTemplate.username%>'s cats</h2>
-        <% for (let i = 0; i < userOnTheTemplate.cats.length; i++) {%>
-        <li><a href="/cats/<%=userOnTheTemplate.cats[i]._id%>"><%=userOnTheTemplate.cats[i].name%></a></li>
+        <h2>Here are <%=photographer.name%>'s photos</h2>
+        <% for (let i = 0; i < photographerOnTheTemplate.cats.length; i++) {%>
+        <li><a href="/cats/<%=photographerOnTheTemplate.cats[i]._id%>"><%=photographer.photo[i].name%></a></li>
         <%}%>
     </ul>
-    <a href="/users/<%=userOnTheTemplate._id%>/edit">CHANGE THIS USER</a>
+    <a href="/photographers/<%=photographer._id%>/edit">CHANGE THIS photographer</a>
 </body>
 </html>

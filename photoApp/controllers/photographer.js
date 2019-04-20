@@ -91,7 +91,7 @@ router.delete('/:id', (req, res) => {
         }, (err, data) => {
             console.log(data);
             //redirect to photographer page
-            res.redirect('/phphotographer');
+            res.redirect('/photographer');
         })
     })
 })

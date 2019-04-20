@@ -7,16 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/cats/<%= catOnTheTemplate._id%>?_method=PUT" method="POST">
-            owner: <select name="userId">
-        <% for (let i = 0; i < usersOnTemplate.length; i++) {%>
-          <option value="<%=usersOnTemplate[i]._id%>"><%=usersOnTemplate[i].username%>
+    <form action="/photo/<%= photo._id%>?_method=PUT" method="POST">
+            owner: <select name="photographerId">
+        <% for (let i = 0; i < photographer.length; i++) {%>
+          <option value="<%=photographer[i]._id%>"><%=photographer[i].photographer.name%>
           </option>
 
           <%}%>
         </select><br/>
-        <input type="text" name="name" value="<%=catOnTheTemplate.name%>">
-        <input type="number" name="age" value="<%=catOnTheTemplate.age%>">
+        <input type="text" name="subject" value="<%=photo.subject%>">
+        <input type="number" name="url" value="<%=photo.url%>">
         <input type="submit">
     </form>
 </body>

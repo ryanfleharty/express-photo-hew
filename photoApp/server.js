@@ -1,20 +1,23 @@
 const express = require('express');
 const app = express();
+const photographer = require('./controllers/photographer');
+const photo = require('./controllers/photo');
+const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const methodOverride = require('method-override')
-
-require('./db/db');
-
-const photoController = require('./controllers/photo');
 
 app.use(bodyParser.urlencoded({
-    extended: false
+    extended: true
 }));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
+require('./db/db');
 
-app.use('/photo', photoController);
+app.get('/', (req, res) => {
+    res.render("index.ejs");
+})
 
+app.use('/photographer', photographer);
+app.use('/photo', photo);
 
 app.listen(3000, () => {
-    console.log('app listening on port: ', 3000);
-});
+    console.log("server is go");
+})

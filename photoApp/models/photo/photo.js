@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema; 
 
 const photoSchema = new Schema({
+    title: {
+        type: String,
+    },
     photographer: {
         type: String,
         required: true
     },
     subject: {
         type: String,
-        required: true
+        
     },
     url: {
         type: String,

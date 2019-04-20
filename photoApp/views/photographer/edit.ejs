@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/users/<%= userOnTheTemplate._id%>?_method=PUT" method="POST">
-        <input type="text" name="username" value="<%=userOnTheTemplate.username%>">
+    <form action="/photographer/<%= photographer._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" value="<%=photographer.name%>">
         <input type="submit">
     </form>
 </body>

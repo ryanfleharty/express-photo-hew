@@ -8,11 +8,11 @@
 </head>
 <body>
 <a href="/">GO SUPER HOME</a>
-<a href="/users/new">MAKE A NEW USER</a>
-    <% usersOnTheTemplate.forEach((user)=>{ %>
+<a href="/photographer/new">MAKE A NEW photographer</a>
+    <% photographer.forEach((photographer)=>{ %>
         <li>
-            <a href="/users/<%=user._id%>"><%=user.username%></a>
-            <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
+            <a href="/photographer/<%=photographer._id%>"><%=photographer.name%></a>
+            <form action="/photographers/<%=photographer._id%>?_method=DELETE" method="POST">
                 <button>DELETE</button>
             </form>
         </li>

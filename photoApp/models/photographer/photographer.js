@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const photographerSchema = new mongoose.Schema({
-photographer: {
+    name: {
         type: String,
         required: true,
         unique: true

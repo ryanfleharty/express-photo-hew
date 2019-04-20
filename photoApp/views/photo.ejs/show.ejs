@@ -8,9 +8,9 @@
 </head>
 <body>
 <a href="/">GO HOME</a>
-<a href="/cats">Go back to cats Index</a>
-    <h1>Here is an enslaver of humans named <%= catOnTheTemplate.name %></h1>
-      <h2><%= catOnTheTemplate.name %>'s owner is <%=user.username%></h2>
-    <a href="/cats/<%=catOnTheTemplate._id%>/edit">THIS CAT CAAAN CHANGE ITS STRIPES</a>
+<a href="/photo">Go back to cats Index</a>
+    <h1>Here is a photo of <%= photo.subject %></h1>
+      <h2><%= photo.subject %>photo's photographer is <%=photographer.name%></h2>
+    <a href="/photo/<%=photo._id%>/edit">Edit this photo</a>
 </body>
 </html>
