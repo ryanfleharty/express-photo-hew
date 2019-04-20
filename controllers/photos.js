@@ -71,30 +71,35 @@ router.delete('/:id', (req, res) => {
             })
         }
     });
-    
-    
-    // Photo.findByIdAndDelete(req.params.id, (error, deletedPhoto) => {
-    //     if(error){
-    //         console.log(error);
-    //     } else {
-    //         console.log(deletedPhoto);
-    //         res.redirect('/photos');
-    //     }
-    // })
 });
+
 
 // EDIT ROUTE
 router.get('/:id/edit', (req, res) => {
-    Photo.findById(req.params.id, (error, foundPhoto) =>{
+    Photo.findById(req.params.id, (error, photoFromDb) => {
         if(error){
-            console.log(error);
+            res.send(error)
         } else {
-            res.render('photos/edit.ejs', {
-                photo: foundPhoto,
-                id: req.params.id
+            User.find({}, (error, usersFromDb) => {
+                res.render('photos/edit.ejs', {
+                  photo: photoFromDb,
+                  user: usersFromDb  
+                })
             })
         }
     })
+
+
+    // Photo.findById(req.params.id, (error, foundPhoto) =>{
+    //     if(error){
+    //         console.log(error);
+    //     } else {
+    //         res.render('photos/edit.ejs', {
+    //             photo: foundPhoto,
+    //             id: req.params.id
+    //         })
+    //     }
+    // })
 });
 
 // UPDATE ROUTE
