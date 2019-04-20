@@ -32,6 +32,7 @@ router.post('/', parser.single('image'), (req,res)=>{
     // to have a width and height of 500, then it sends it to the
     // /blogApp folder that exists online in my cloudinary account
     // which is defined in cloudinary.config
+    if (req.file){
     Photo.create({
       url: req.file.url,
       caption: "",
@@ -49,6 +50,16 @@ router.post('/', parser.single('image'), (req,res)=>{
         res.redirect('/users')
       })
     })
+  } else {
+    User.create({
+      name: req.body.name,
+      description: req.body.description,
+      relationshipStatus: req.body.relationshipStatus,
+      photos: []
+    }, (err, newUser)=>{
+      res.redirect('/users')
+    })
+  }
 })
 
 router.get('/', (req,res)=>{
@@ -60,7 +71,17 @@ router.get('/', (req,res)=>{
 })
 
 
-
+router.get('/:id', (req,res)=>{
+  User
+  .findById(req.params.id)
+  .populate('photos')
+  .exec((err, foundUser)=>{
+    console.log(foundUser);
+    res.render('users/show.ejs', {
+      user: foundUser
+    })
+  })
+})
 
 
 

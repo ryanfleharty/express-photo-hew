@@ -9,8 +9,32 @@
   <body>
     <% include ../partials/nav.ejs %>
 
+    <div class="userBox">
+      <h1><%=user.name%></h1>
+      <img src="<%=user.profilePicture%>" alt="Profile-Picture">
+    </div>
 
+    <div class="description">
+      <h4><%=user.description%></h4>
+    </div>
 
+    <h2>PHOTOS</h2>
+    <div class="userPhotos">
+      <ul>
+
+        <% for (let i = 0; i < user.photos.length; i++) { %>
+
+        <li>
+          <a href="/photos/<%=user.photos[i]._id%>">
+            <h5>POSTED: <%=user.photos[i].datePosted%></h5>
+            <img class="profilePhotoList" src="<%=user.photos[i].url%>">
+          </a>
+        </li>
+
+        <% } %>
+
+      </ul>
+    </div>
 
 
 
