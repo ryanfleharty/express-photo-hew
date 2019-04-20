@@ -51,7 +51,13 @@ router.post('/', parser.single('image'), (req,res)=>{
     })
 })
 
-
+router.get('/', (req,res)=>{
+  User.find({}, (err,foundUsers)=>{
+    res.render('users/index.ejs', {
+      users: foundUsers
+    })
+  })
+})
 
 
 
