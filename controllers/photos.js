@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Photo = require('../models/photos');
+const User = require('../models/users');
 
 
 // ROUTES 
@@ -11,7 +12,7 @@ router.get('/', (req, res) => {
         if(error){
             console.log(error);
         } else {
-            res.render('index.ejs', {
+            res.render('photos/index.ejs', {
                 allPhotos: returnedPhotos
             })
         }
@@ -20,7 +21,7 @@ router.get('/', (req, res) => {
 
 // NEW ROUTE
 router.get('/new', (req, res) => {
-    res.render('new.ejs')
+    res.render('photos/new.ejs')
 });
 
 // CREATE ROUTE
@@ -53,7 +54,7 @@ router.get('/:id/edit', (req, res) => {
         if(error){
             console.log(error);
         } else {
-            res.render('edit.ejs', {
+            res.render('photos/edit.ejs', {
                 photo: foundPhoto,
                 id: req.params.id
             })
@@ -81,8 +82,9 @@ router.get('/:id', (req, res) => {
         if(error){
             console.log(error)
         } else {
-            res.render('show.ejs', {
-                photo: foundPhoto
+            res.render('photos/show.ejs', {
+                photo: foundPhoto,
+                id: req.params.id
             })
         }
     })

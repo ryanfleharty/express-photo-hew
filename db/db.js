@@ -1,6 +1,7 @@
 //DB Requires
 const mongoose = require('mongoose');
 const PhotoModel = require('../models/photos');
+const UserModel = require('../models/users');
 const connectionString = 'mongodb://localhost/photos';
 
 //DB Middleware
@@ -24,6 +25,8 @@ mongoose.connection.on('disconnected', () => {
 });
 
 
+
+//PHOTO BASE POPULATION
 // const photoData = require('../populatePhotos');
 
 // PhotoModel.collection.insertMany(photoData, (err, data) => {
@@ -31,3 +34,12 @@ mongoose.connection.on('disconnected', () => {
 //     mongoose.connection.close(); 
 // });
 
+
+//USERS BASE POPULATION
+// const usersData = require('../populateUsers');
+
+// UserModel.collection.insertMany(usersData, (err, data) => {
+//     console.log('added user data');
+//     console.log(data);
+//     mongoose.connection.close();
+// });
