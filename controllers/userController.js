@@ -70,19 +70,37 @@ router.get('/', (req,res)=>{
   })
 })
 
-
 router.get('/:id', (req,res)=>{
   User
   .findById(req.params.id)
   .populate('photos')
   .exec((err, foundUser)=>{
-    console.log(foundUser);
     res.render('users/show.ejs', {
       user: foundUser
     })
   })
 })
 
+router.delete('/:id', (req,res)=>{
+  User.findByIdAndDelete(req.params.id, (err,deletedUser)=>{
+    if (err) {
+        console.log(err);
+    } else {
+      Photo.deleteMany({
+        _id:
+        {
+          $in: deletedUser.photos
+        }
+      }, (err, deletedPhotos)=>{
+        if (err) {
+        console.log(err);
+      } else {
+        res.redirect('/users')
+      }
+      })
+    }
+  })
+})
 
 
 

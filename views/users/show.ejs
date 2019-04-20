@@ -18,8 +18,13 @@
       <h4><%=user.description%></h4>
     </div>
 
-    <h2>PHOTOS</h2>
+    <div>
+      <a href="/photos/<%=user._id%>/new"><h2>UPLOAD A PHOTO!</h2></a>
+    </div>
+
+
     <div class="userPhotos">
+      <h2>PHOTOS</h2>
       <ul>
 
         <% for (let i = 0; i < user.photos.length; i++) { %>
@@ -35,6 +40,10 @@
 
       </ul>
     </div>
+
+    <form class="row" action="/users/<%=user._id%>?_method=DELETE" method="post">
+      <button type="submit">Delete User</button>
+    </form>
 
 
 

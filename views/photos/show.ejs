@@ -10,11 +10,25 @@
     <% include ../partials/nav.ejs %>
 
 
+    <div class="imageShow">
+      <h6><%=image.location%></h6>
+      <img src="<%=image.url%>" alt="Image-Does-Not-Exist">
+      <div class="likes">
+        LIKES [<%=image.likes%>]
+      </div>
+      <h4>Posted By: <a href="/users/<%=user._id%>"><%=user.name%></a></h4>
+    </div>
+    <div class="imageCaption">
+      <h3><%=image.caption%></h3>
+    </div>
+    <div class="datePosted">
+      <h6>POSTED: <%=image.datePosted%></h6>
+    </div>
 
 
-
-
-
+    <form action="/photos/<%=image._id%>?_method=delete" method="post">
+      <button type="submit">DELETE PHOTO</button>
+    </form>
 
 
 

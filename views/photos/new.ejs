@@ -9,8 +9,26 @@
   <body>
     <% include ../partials/nav.ejs %>
 
+    <h1>NEW PHOTO!</h1>
 
 
+
+    <form action="/photos/users/<%=userId%>" enctype="multipart/form-data" method="post">
+      <div class="row">
+          <h3 class="col-sm-3">UPLOAD FILE:</h3><input class="col-sm-6" type="file" name="image">
+      </div>
+        <h5>OR</h5>
+      <div class="row">
+          <h3 class="col-sm-3">PASTE A URL:</h3><input class="col-sm-6" type="text" name="url">
+      </div>
+      <div class="row">
+        <h3 class="col-sm-3">LOCATION:</h3>  <input class="col-sm-3" type="text" name="location">
+      </div>
+      <div class="row">
+        <h3 class="col-sm-3">CAPTION:</h3>  <input class="col-sm-8" type="text" name="caption">
+      </div>
+      <button type="submit" name="button">Submit</button>
+    </form>
 
 
 

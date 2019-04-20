@@ -10,7 +10,21 @@
     <% include ../partials/nav.ejs %>
 
 
+    <h1>ALL PHOTOS</h1>
+    <ul>
+      <% for (let i = 0; i < photos.length; i++) { %>
 
+        <li>
+
+          <a href="/photos/<%=photos[i]._id%>">
+            <img src="<%=photos[i].url%>" alt="Photo-Does-Not-Exist">
+            <h5 class="indexLikes">Likes [<%=photos[i].likes%>]</h5>
+          </a>
+
+        </li>
+
+        <% } %>
+    </ul>
 
 
 
