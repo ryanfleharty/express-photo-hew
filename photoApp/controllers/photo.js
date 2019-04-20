@@ -76,9 +76,9 @@ router.post('/', (req, res) => {
     //create a brand new photo with the information from the form
     //form 'name' attributes match the photochema
     photo.create(req.body, (err, photo) => {
-        console.log(`Created a photo for photographer ${req.body.photographerId}`);
+        console.log(`Created a photo for photographer ${req.body.photographer}`);
         //find the photographer from the input in the ejs
-        photographer.findById(req.body.photographerId, function (err, photographer) {
+        photographer.findById(req.body.photographer, function (err, photographer) {
             //add the unique id from the photographer to the created photo object
             photographer.photo.push(photo._id);
             //save changes because we mutated an array in a DB

@@ -6,7 +6,7 @@ const photographer = require('../models/photographer/photographer')
 
 //client requests to see photographer
 router.get('/', (req, res) => {
-    //find phphotographer
+    //find photographer
     photographer.find({}, (err, photographer) => {
         //render photographer to ejs page
         res.render('photographer/index.ejs', {

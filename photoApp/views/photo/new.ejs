@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class='container-fluid'>
+    <nav class="nav nav-pills flex-column flex-sm-row">
+      <a class="flex-sm-fill text-sm-center nav-link" href="/">HOME</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="/photographer">PHOTOGRAPHERS</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="/photo">PHOTOS</a>
+    </nav>
+  <form action="/photo" method="POST">
+    <div class="form-row align-items-center">
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">TITLE</label>
+        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Give your phote a title" name="title">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">SUBJECT</label>
+        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="What is the subject of your photo?" name="subject">
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">URL: </label>
+        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="URL REQUIRED" name="url">
+      <div class="col-auto">
+      <div class="col-auto">
+        <label class="sr-only" for="inlineFormInput">PHOTOGRAPHER </label>
+        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="YOUR NAME REQUIRED"name="photographer">
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
