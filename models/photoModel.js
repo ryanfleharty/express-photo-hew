@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const photoSchema = mongoose.Schema({
   title:String,
-  body:String
+  caption: String,
+  date: Date
 });
 
 const Photo = mongoose.model('Photo', photoSchema);

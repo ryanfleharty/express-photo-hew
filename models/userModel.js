@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
-  title:String,
-  body:String
+  username: {type: String, required: true, unique: true},
+  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Photo'}]
 });
 
 const User = mongoose.model('User', userSchema);
