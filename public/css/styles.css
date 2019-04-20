@@ -103,6 +103,10 @@ div.card {
     justify-content: center;
     }
 
+select {
+    margin-bottom: 15px;
+}
+
 .bigger {
     min-width: 500px;
     margin-top: 75px;

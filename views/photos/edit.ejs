@@ -20,18 +20,23 @@
 
 <div class="form-holder">
 <div class="bigger">
-    <form action="/photos/<%=user._id%>?_method=PUT" method="POST">
-
+    <form action="/photos/<%=photo._id%>?_method=PUT" method="POST">
     <div class="form-group">
-        <label for="formGroupExampleInput2">Title</label>
+       owner: <select name="name">
+        <% for (let i = 0; i < user.length; i++) {%>
+          <option value="<%=user[i]._id%>"><%=user[i].name%>
+          </option>
+          <%}%>
+    </div>
+    <div class="form-group">
         <input type="text" class="form-control" id="formGroupExampleInput2" name="title" value="<%=photo.title%>">
     </div>
     <div class="form-group">
-        <label for="formGroupExampleInput3">Photo Url</label>
+
         <input type="text" class="form-control" id="formGroupExampleInput3" name="url" value="<%=photo.url%>">
     </div>
     <div class="form-group">
-        <label for="formGroupExampleInput4">Info</label>
+
         <input type="text" class="form-control" id="formGroupExampleInput4" name="info" value="<%=photo.info%>">
     </div>
     <button class="editSubmit" type="submit">Submit Changes</button>

@@ -88,31 +88,33 @@ router.get('/:id/edit', (req, res) => {
             })
         }
     })
-
-
-    // Photo.findById(req.params.id, (error, foundPhoto) =>{
-    //     if(error){
-    //         console.log(error);
-    //     } else {
-    //         res.render('photos/edit.ejs', {
-    //             photo: foundPhoto,
-    //             id: req.params.id
-    //         })
-    //     }
-    // })
 });
+
 
 // UPDATE ROUTE
 router.put('/:id', (req, res) => {
-    Photo.findOneAndUpdate({_id: req.params.id}, req.body, (error, foundPhoto) => {
+    Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedPhoto) => {
         if(error) {
-            console.log(error);
+            res.send(error)
         } else {
-            foundPhoto = req.body;
-            res.redirect('/photos');
-            console.log(foundPhoto);
+            User.findOne({'photos': req.params.id}, (error, foundUser) => {
+                if(foundUser._id.toString() !== req.body.name){
+                    foundUser.photos.remove(req.params.id);
+                    foundUser.save((error, savedFoundUser) => {
+                        User.findById(req.body.name, (error, newUser) => {
+                            newUser.photos.push(updatedPhoto._id);
+                            newUser.save((error, savedNewUser) => {
+                                res.redirect('/photos/' + req.params.id);
+                            })
+                        })
+                    })
+                } else {
+                    res.redirect('/photos/' + req.params.id);
+                }
+            })
         }
     })
+
 })
 
 
