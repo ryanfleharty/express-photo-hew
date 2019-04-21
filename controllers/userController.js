@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
         if(err){
             res.send(err)
         }else{
-            res.render('users/:id/show.ejs')
+            res.render('users/show.ejs', {user: oneUser})
         }
     })
 })
@@ -46,16 +46,24 @@ router.get('/:id', (req, res) => {
 
 // EDIT ROUTE
 router.get('/:id/edit', (req, res) => {
-    res.render('users/:id/edit.ejs', {user: User})
+    User.findById(req.params.id, (err, editUser) => {
+        if(err){
+            console.log(err)
+        }else{
+            console.log(editUser),
+            res.render('users/edit.ejs', {user: editUser})
+        }
+    })
+    
 });
 
 // UPDATE ROUTE
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('/photos', {user: updatedUser})
+            res.redirect('/users')
         }
     })
 })

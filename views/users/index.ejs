@@ -7,7 +7,8 @@
     <title>Photo Index</title>
 </head>
 <body>
-    <h1>ALl Users</h1>
+<a href="/">Home</a>
+    <h1>All Users</h1>
     <form action="/users/new" method="GET">
     <button type="submit">New User</button>
     </form>
@@ -15,10 +16,9 @@
         <li>
             <a href="/users/<%=user._id%>"><%=user.username%></a>
             <p>
-            <%=user.photos%><br>
             
             </p>
-            <form action="/photos/<%=photo._id%>?_method=DELETE" method="POST">
+            <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
                 <button>DELETE</button>
             </form>
         </li>

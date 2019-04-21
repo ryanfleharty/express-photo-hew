@@ -60,12 +60,12 @@ router.post('/', (req, res) => {
 
 
 // UPDATE ROUTE
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     Photo.findByIdAndUpdate(req.params.id, req.body, (err, updatedPhoto) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('/photos', {photo: updatedPhoto})
+            res.redirect('/photos')
         }
     })
 })
