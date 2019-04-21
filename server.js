@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const userController = require('./controllers/users/userController');
+const photoController = require('./controllers/photos/photoController');
 const User = require('./models/users/userSchema');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
@@ -12,7 +13,8 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
-app.use('/users',userController);
+app.use('/users', userController);
+app.use('/photos', photoController);
 
 //Render the homepage:
 // app.get('/', (req, res) => {
