@@ -9,10 +9,27 @@ router.get('/', (req, res)=>{
         if(err){
             res.send(err)
         }else{
-            res.render('photos/index.ejs')
+            res.render('photos/index.ejs', {photo: allPhotos})
         }
     })
 });
+
+// NEW ROUTE
+router.get('/new', (req, res) => {
+    res.render('photos/new.ejs')
+});
+
+
+// CREATE ROUTE
+router.post('/', (req, res) => {
+    Photo.create(req.body, (err, newPhoto) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.redirect('/photos', {photo: newPhoto})
+        }
+    })
+})
 
 // SHOW ROUTE
 router.get('/:id', (req, res) => {
@@ -25,21 +42,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-// NEW ROUTE
-router.get('/new', (req, res) => {
-    res.render('photos/new.ejs')
-});
 
-// CREATE ROUTE
-router.post('/', (req, res) => {
-    Photo.create(req.body, (err, newPhoto) => {
-        if(err){
-            res.send(err)
-        }else{
-            res.redirect('photos/index.ejs', {photo: newPhoto})
-        }
-    })
-})
 
 // EDIT ROUTE
 router.get('/:id/edit', (req, res) => {
@@ -52,7 +55,7 @@ router.put('/', (req, res) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('photos/index.ejs', {photo: updatedPhoto})
+            res.redirect('/photos', {photo: updatedPhoto})
         }
     })
 })
@@ -63,7 +66,7 @@ router.delete('/', (req, res) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('/')
+            res.redirect('/photos')
         }
     })
 });

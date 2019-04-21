@@ -8,5 +8,19 @@
 </head>
 <body>
     <h1>Every Single Photo; You Already Know Tho</h1>
+    <% photo.forEach((photo)=>{ %>
+        <li>
+            <a href="/photos/<%=photo._id%>"><%=photo.title%></a>
+            <p>
+            <%=photo.url%>
+            <%=photo._id%>
+            <%=photo.caption%>
+            
+            </p>
+            <form action="/photos/<%=photo._id%>?_method=DELETE" method="POST">
+                <button>DELETE</button>
+            </form>
+        </li>
+    <% }) %>
 </body>
 </html>

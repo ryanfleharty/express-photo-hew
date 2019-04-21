@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const photoSchema = mongoose.Schema({
-  title:String,
+  title: String,
   caption: String,
+  url: String,
   date: Date
 });
 

@@ -7,6 +7,19 @@
     <title>New Photo</title>
 </head>
 <body>
+
+<a href="/">Home</a>
+<a href="/photos">All Photos</a>
+
     <h1>Submit a New Pic</h1>
+    <form action="/photos" method="POST">
+        Title: <input type="text" name="title">
+        Caption: <input type="text" name="caption">
+        URL: <input type="text" name="url">
+        Date Captured: <input type="Date" name="date">
+        <button type="submit">Create Photo</button>
+    </form>
+
+
 </body>
 </html>
