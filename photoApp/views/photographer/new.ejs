@@ -11,18 +11,32 @@
 <body>
 <div class='container-fluid'>
 
-<nav class="nav nav-pills flex-column flex-sm-row">
+<nav class="nav nav-pills flex-column flex-sm-row navbar navbar-expand-lg navbar">
   <a class="flex-sm-fill text-sm-center nav-link" href="/">HOME</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="/photographer">PHOTOGRAPHERS</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="/photo">PHOTOS</a>
 </nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome New Photographer</h1>
+    <p class="lead">Add your name and create a password, click submit, then click add a photo to start your collection!</p>
+  </div>
+</div>
+<form action="/photographer" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Please Enter Your Name:</label>
+    <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Create a Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
 
-    <form action="/photographer" method="POST">
-        Name: <input type="text" name="name">
-        Password: <input type="text" name="password">
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light"></nav>
 
-        <input type="submit">
-    </form>
 </div>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

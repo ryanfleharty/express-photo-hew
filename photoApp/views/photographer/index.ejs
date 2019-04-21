@@ -9,22 +9,16 @@
 </head>
 <body>
 <div class='container-fluid'>
-
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link" href="/">HOME</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="/photographer">PHOTOGRAPHERS</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="/photo">PHOTOS</a>
 </nav>
 
-<a href="/">GO SUPER HOME</a>
-<a href="/photographer/new">MAKE A NEW photographer</a>
+
     <% photographer.forEach((photographer)=>{ %>
         <li>
-            <h3><%=photographer.name%></h3>
-            <form action="/photographer/<%=photographer._id%>">
-                <h6>please enter your password to sign in: </h6>
-                <input type="text" name="password">SIGN IN<input type="submit">
-            </form>
+            <a href="/photographer/<%=photographer._id%>"><%=photographer.name%></a>
             <form action="/photographer/<%=photographer._id%>?_method=DELETE" method="POST">
                 <button>DELETE THIS ACCOUNT</button>
             </form>

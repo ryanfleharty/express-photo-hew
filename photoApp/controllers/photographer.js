@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     photographer.find({}, (err, photographer) => {
         //render photographer to ejs page
         res.render('photographer/index.ejs', {
-            //inject variable for ohotographer to use on ejs page
+            //inject variable for photographer to use on ejs page
             photographer: photographer
         })
     })
@@ -25,29 +25,24 @@ router.get('/new', (req, res) => {
 //show photographer page
 //client requests to see specific ohotographer 
 router.get('/:id', (req, res) => {
-    //find the requested ohotographer in the db
+    //find the requested user in the db
     photographer.findById(req.params.id)
-        //check the db to see populate photo based on the id 
         .populate('photo')
-        //executes the request.  waits on the ohotographer information
+        //executes the request.  waits on the user information
         .exec((err, photographer) => {
             if (err) {
                 //check for error
                 res.send(err);
                 //render the show template
             } else {
-                if(req.body.password === photographer.password){
-                    res.render('photographer/show.ejs', {
+                res.render('photographer/show.ejs', {
                     //inject the variables to the template
-                     photographer: photographer})
-                }else{
-                    res.redirect('/photographer')
-                }
-                };
-            })
+                    photographer: photographer
+                });
+            }
 
         })
-
+})
 
 //find the ohotographer requested from the client in the db based on edit request input 
 router.get('/:id/edit', (req, res) => {
@@ -63,8 +58,8 @@ router.get('/:id/edit', (req, res) => {
 //post the information received from the new template form
 router.post('/', (req, res) => {
     //create new user in the db 
-    photographer.create(req.body, (err, newPhotog) => {
-        console.log(newPhotog)
+    photographer.create(req.body, (err, photographer) => {
+        console.log(photographer)
         //redirect to user page
         res.redirect('/photographer')
     })
