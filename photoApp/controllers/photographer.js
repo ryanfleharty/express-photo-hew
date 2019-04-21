@@ -62,10 +62,10 @@ router.get('/:id/edit', (req, res) => {
 //create/post route
 //post the information received from the new template form
 router.post('/', (req, res) => {
-    //create new photographer in the db 
-    photographer.create(req.body, (err, photographer) => {
-        console.log(photographer)
-        //redirect to photographer page
+    //create new user in the db 
+    photographer.create(req.body, (err, newPhotog) => {
+        console.log(newPhotog)
+        //redirect to user page
         res.redirect('/photographer')
     })
 })
@@ -85,18 +85,24 @@ router.delete('/:id', (req, res) => {
     photographer.findByIdAndDelete(req.params.id, (err, photographer) => {
         console.log(photographer);
         //delete photographer's photo in the db
-        Cat.deleteMany({
-            //find the photo unique id
-            _id: {
-                //use mongo command to delete photographer reference from cat object array
-                $in: photographer.photo
-            }
-            //now that the photographer reference is deleted, delete the cat, unless there is an error
-        }, (err, data) => {
-            console.log(data);
-            //redirect to photographer page
-            res.redirect('/photographer');
-        })
+        if(photographer.photo != null){
+
+    photo.deleteMany({
+        //find the photo unique id
+        _id: {
+            //use mongo command to delete photographer reference from cat object array
+            $in: photographer.photo
+        }
+        //now that the photographer reference is deleted, delete the cat, unless there is an error
+    }, (err, data) => {
+        console.log(data);
+        //redirect to photographer page
+        res.redirect('/photographer');
+    })
+
+        }
+    else{res.redirect('/')}
+    
     })
 })
 
