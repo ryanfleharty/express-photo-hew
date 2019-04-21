@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 // },{
 //     name: 'dave',
 //     photo: [],
-//      password: "bosco"
+//      password: "me"
 // }]
 // , (err, data) => {
 //     console.log("added provided data")

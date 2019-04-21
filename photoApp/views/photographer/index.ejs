@@ -21,7 +21,7 @@
     <% photographer.forEach((photographer)=>{ %>
         <li>
             <h3><%=photographer.name%></h3>
-            <form action="/photographer/<%=photographer._id%>" method="POST">
+            <form action="/photographer/<%=photographer._id%>">
                 <h6>please enter your password to sign in: </h6>
                 <input type="text" name="password">SIGN IN<input type="submit">
             </form>

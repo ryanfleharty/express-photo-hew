@@ -104,7 +104,7 @@ router.put('/:id', (req, res) => {
             'photo': req.params.id
         }, (err, photographer) => {
             //if the owner id matched the form (or does not not match it), 
-            if (photographer._id.toString() !== req.body.photographerId) {
+            if (photographer._id.toString() !== req.body.photographer) {
                 //remove the photo from the photographer's object
                 photographer.photo.remove(req.params.id);
                 //save since we mutated an array on the db
@@ -116,7 +116,7 @@ router.put('/:id', (req, res) => {
                         //save mutated array
                         photographer.save((err, photographer) => {
                             //redirect the route to photo show page
-                            res.redirect('/photo/' + req.params._id);
+                            res.redirect('/photo/');
                         })
                     })
                 })
