@@ -11,24 +11,30 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div>
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-3">
+        </div>
         <div class="nav">
         <a href="/"><h2>Home</h2></a>
         </div>
         <div class="nav">
-        <a href="/photos"><h2>Photos</h2></a>
-        </div>
-        <div class="nav">
         <a href="/users"><h2>Users</h2></a>
         </div>
-        <h1>Upload a New Photo</h1>
-        <form action="/photos" method="post">
-            <div>*Photo URL <input type="text" name="url" placeholder="photo url"></div>
-            <div>Photo Title <input type="text" name="title" placeholder="something people want to look at"></div>
-            <div>Photo Description <input type="text" name="description" placeholder="tell us about what's in the photo"></div>
-            <div><button class="btn btn-info" type="submit">Upload Photo</button></div>
-        </form>
-        *required
+        <div class="nav">
+        <a href="/photos"><h2>Photos</h2></a>
+        </div>
+            <div class="col-md-auto">
+            <h1>Edit User <%= user.username %></h1>
+            <form action="/users/<%= user._id %>?_method=PUT" method="post">
+                <div>Change Username <input type="text" name="username" value="<%= user.username %>"></div>
+                <div>Change Password <input type="text" name="password" value="<%= user.password %>"></div>
+                <div><button class="btn btn-info" type="submit">Submit Edits</button></div>
+            </form>
+            *required
+            </div>
+        </div>
+        <div class="col col-lg-3">
+        </div>
     </div>
 </div>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,14 +21,12 @@
         <div class="nav">
         <a href="/users"><h2>Users</h2></a>
         </div>
-        <h1>Upload a New Photo</h1>
-        <form action="/photos" method="post">
-            <div>*Photo URL <input type="text" name="url" placeholder="photo url"></div>
-            <div>Photo Title <input type="text" name="title" placeholder="something people want to look at"></div>
-            <div>Photo Description <input type="text" name="description" placeholder="tell us about what's in the photo"></div>
-            <div><button class="btn btn-info" type="submit">Upload Photo</button></div>
+        <h1>Sign In</h1>
+        <form action="/users" method="post">
+            <div>Username <input type="text" name="username"></div>
+            <div>Password <input type="text" name="password"></div>
+            <div><button class="btn btn-info" type="submit">Sign In</button></div>
         </form>
-        *required
     </div>
 </div>
 

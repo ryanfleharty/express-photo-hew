@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Photo = require('../models/photo');
+const User = require('../models/user')
 
 // index route
 // The home (index) page should show all of the pictures that 
@@ -42,13 +43,17 @@ router.post('/', (req, res) => {
 // show route
 router.get('/:id', (req, res) => {
     Photo.findById(req.params.id, (err, photoToShow) => {
-        if (err){
-            res.send(err);
-        } else {
-            res.render('photo/show.ejs', {
-                photo: photoToShow,
-            })
-        }  
+        User.findOne({
+            'photos': req.params.id
+        }, (err, user) => {
+            if (err){
+                res.send(err);
+            } else {
+                res.render('photo/show.ejs', {
+                    photo: photoToShow,
+                })
+            }  
+        })
     })
 });
 
