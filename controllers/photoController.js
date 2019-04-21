@@ -16,7 +16,14 @@ router.get('/', (req, res)=>{
 
 // NEW ROUTE
 router.get('/new', (req, res) => {
-    res.render('photos/new.ejs')
+    User.find({}, (err, allUsers) => {
+        if(err){
+            console.log(err)
+        }else{
+            res.render('photos/new.ejs', {user: allUsers})
+        }
+    })
+    
 });
 
 // SHOW ROUTE
@@ -50,11 +57,16 @@ router.get('/:id/edit', (req, res) => {
 // CREATE ROUTE
 router.post('/', (req, res) => {
     Photo.create(req.body, (err, newPhoto) => {
-        if(err){
-            res.send(err)
-        }else{
-            res.redirect('/photos')
-        }
+        User.findById(req.body.userId, (err, oneUser)=>{
+            if(err){
+                console.log(err)
+            }else{
+                oneUser.photos.push(newPhoto._id);
+                oneUser.save((err, savedUser)=>{
+                    res.redirect('/photos')
+                })
+            }
+        })
     })
 })
 

@@ -13,6 +13,12 @@
 
     <h1>Submit a New Pic</h1>
     <form action="/photos" method="POST">
+        <select name="userId">
+            <% for(let i = 0; i < user.length; i++){%>
+                <option value="<%=user[i]._id%>"><%=user.name%></option>
+            <%}%>
+        </select><br>
+
         Title: <input type="text" name="title">
         Caption: <input type="text" name="caption">
         URL: <input type="text" name="url">
