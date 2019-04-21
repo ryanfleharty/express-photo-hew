@@ -17,22 +17,6 @@ app.get('/', (req, res) => {
     res.render("index.ejs");
 })
 
-
-// Photographer.collection.insertMany([{
-//     name: 'John',
-//     photo: [],
-//       password: "brother"
-// },{
-//     name: 'dave',
-//     photo: [],
-//      password: "me"
-// }]
-// , (err, data) => {
-//     console.log("added provided data")
-//     mongoose.connection.close();
-// });
-
-
 app.use('/photographer', photographer);
 app.use('/photo', photo);
 
