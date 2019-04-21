@@ -102,6 +102,43 @@ router.delete('/:id', (req,res)=>{
   })
 })
 
+router.get('/:id/edit', (req,res)=>{
+  User.findById(req.params.id, (err,foundUser)=>{
+    res.render('users/edit.ejs', {
+      user: foundUser
+    })
+  })
+})
+
+router.put('/:id', parser.single('image'), (req,res)=>{
+  console.log(req.file);
+  if (req.file) {
+  Photo.create({
+    url: req.file.url,
+    caption: "",
+    location: "",
+    datePosted: new Date(),
+    likes: 0,
+  }, (err, image)=>{
+    User.findByIdAndUpdate(req.params.id, {
+      name: req.body.name,
+      description: req.body.description,
+      relationshipStatus: req.body.relationshipStatus,
+      profilePicture: image.url,
+    }, (err, newUser)=>{
+      res.redirect(`/users/${req.params.id}`)
+    })
+  })
+} else {
+  User.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    description: req.body.description,
+    relationshipStatus: req.body.relationshipStatus,
+  }, (err, newUser)=>{
+    res.redirect(`/users/${req.params.id}`)
+  })
+}
+})
 
 
 module.exports = router;

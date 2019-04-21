@@ -13,7 +13,27 @@
 
 
 
-
+    <form action="/users/<%=user._id%>?_method=put" enctype="multipart/form-data" method="post">
+      <div class="row">
+        <h3 class="col-sm-3">NAME:</h3>  <input class="col-sm-3" type="text" required="required" name="name" value="<%=user.name%>">
+      </div>
+      <div class="row">
+        <h3 class="col-sm-3">DESCRIPTION:</h3>  <input class="col-sm-8" type="text" name="description" value="<%=user.description%>">
+      </div>
+      <div class="row">
+        <h3 class="col-sm-3">RELATIONSHIP STATUS:</h3>
+        <select class="col-sm-3" name="relationshipStatus" value="<%=user.relationshipStatus%>">
+          <option value="Single">Single</option>
+          <option value="In a Relationship">In a Relationship</option>
+          <option value="It's Complicated">It's Complicated</option>
+          <option value="Prefer Not To Answer">Prefer Not To Answer</option>
+        </select>
+      </div>
+      <div class="row">
+          <h3 class="col-sm-3">PROFILE PICTURE:</h3><input class="col-sm-6" type="file" name="image">
+      </div>
+      <button type="submit" name="button">Submit</button>
+    </form>
 
 
 
