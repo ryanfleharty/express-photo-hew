@@ -15,7 +15,7 @@
     <form action="/photos" method="POST">
         <select name="userId">
             <% for(let i = 0; i < user.length; i++){%>
-                <option value="<%=user[i]._id%>"><%=user.name%></option>
+                <option value="<%=user[i]._id%>"><%=user[i].username%></option>
             <%}%>
         </select><br>
 
