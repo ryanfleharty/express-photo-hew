@@ -3,8 +3,11 @@ const mongoose = require('mongoose');
 const connectionString = 'mongodb://localhost/photo';
 
 
-mongoose.connect(connectionString);
-
+mongoose.connect(connectionString, {
+useNewUrlParser: true,
+useCreateIndex: true,
+useFindAndModify: false
+});
 
 mongoose.connection.on('connected', () => {
   console.log(`Mongoose connected to ${connectionString}`);
