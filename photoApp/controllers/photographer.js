@@ -22,12 +22,12 @@ router.get('/new', (req, res) => {
     //render the new ohotographer template 
     res.render('photographer/new.ejs');
 })
-//show ohotographer page
+//show photographer page
 //client requests to see specific ohotographer 
 router.get('/:id', (req, res) => {
     //find the requested ohotographer in the db
     photographer.findById(req.params.id)
-        //check the db to see populate photo based on the id of the cat reference in the ohotographer object 
+        //check the db to see populate photo based on the id 
         .populate('photo')
         //executes the request.  waits on the ohotographer information
         .exec((err, photographer) => {
@@ -36,14 +36,18 @@ router.get('/:id', (req, res) => {
                 res.send(err);
                 //render the show template
             } else {
-                res.render('photographer/show.ejs', {
+                if(req.body.password === photographer.password){
+                    res.render('photographer/show.ejs', {
                     //inject the variables to the template
-                    photographer: photographer
-                });
-            }
+                     photographer: photographer})
+                }else{
+                    res.redirect('/photographer')
+                }
+                };
+            })
 
         })
-})
+
 
 //find the ohotographer requested from the client in the db based on edit request input 
 router.get('/:id/edit', (req, res) => {

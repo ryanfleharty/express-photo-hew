@@ -6,9 +6,14 @@ const photographerSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    pasword: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     photo: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'photo'
+        ref:'photo'
     }]
 })
 

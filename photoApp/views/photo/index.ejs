@@ -19,8 +19,8 @@
 
     <% photo.forEach((photo)=>{ %>
         <li>
-            <a href="/photo/<%=photo._id%>"><%=photo.name%></a>
-            <p>This is a photo of<%=photo.subject%> called <%=photo.title%> by <%=photographer.name%></p>
+            <a href="/photo/<%=photo._id%>"><%=photo.subject%></a>
+            <p>This is a photo of<%=photo.description%> called <%=photo.subject%> by <%=photographer.name%></p>
             <form action="/photo/<%=photo._id%>?_method=DELETE" method="POST">
                 <button>DELETE</button>
             </form>

@@ -23,7 +23,7 @@
     <ul>
         <h2>Here are <%=photographer.name%>'s photos</h2>
         <% for (let i = 0; i < photographer.length; i++) {%>
-        <li><a href="/cats/<%=photographer[i]._id%>"><%=photographer.photo[i].name%></a></li>
+        <li><a href="/photo/<%=photographer[i]._id%>"><%=photographer.photo[i].name%></a></li>
         <%}%>
     </ul>
     <a href="/photographer/<%=photographer._id%>/edit">CHANGE THIS photographer</a>

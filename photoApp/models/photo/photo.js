@@ -1,14 +1,14 @@
 const mongoose = require('mongoose'); 
 
 const photoSchema = new mongoose.Schema({
-    title: {
+    subject: {
         type: String,
     },
     photographer: {
         type: String,
         required: true
     },
-    subject: {
+    description: {
         type: String,
         
     },

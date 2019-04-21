@@ -20,9 +20,13 @@
 <a href="/photographer/new">MAKE A NEW photographer</a>
     <% photographer.forEach((photographer)=>{ %>
         <li>
-            <a href="/photographer/<%=photographer._id%>"><%=photographer.name%></a>
+            <h3><%=photographer.name%></h3>
+            <form action="/photographer/<%=photographer._id%>" method="POST">
+                <h6>please enter your password to sign in: </h6>
+                <input type="text" name="password">SIGN IN<input type="submit">
+            </form>
             <form action="/photographer/<%=photographer._id%>?_method=DELETE" method="POST">
-                <button>DELETE</button>
+                <button>DELETE THIS ACCOUNT</button>
             </form>
         </li>
     <% }) %>

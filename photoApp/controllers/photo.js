@@ -85,7 +85,7 @@ router.post('/', (req, res) => {
             photographer.save((err, photographer) => {
                 console.log(photographer);
                 //send the client to the photo page
-                res.redirect('/photo')
+                res.redirect('/')
             });
         });
 
@@ -116,7 +116,7 @@ router.put('/:id', (req, res) => {
                         //save mutated array
                         photographer.save((err, photographer) => {
                             //redirect the route to photo show page
-                            res.redirect('/photo/' + req.params.id);
+                            res.redirect('/photo/' + req.params._id);
                         })
                     })
                 })
