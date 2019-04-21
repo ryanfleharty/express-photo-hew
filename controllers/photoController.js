@@ -28,17 +28,15 @@ router.get('/new', (req, res) => {
 
 // SHOW ROUTE
 router.get('/:id', (req, res) => {
-    Photo.findById(req.params.id, (err, onePhoto) => {
-        if(err){
-            res.send(err)
-        }else{
+    Photo.findById(req.params.id, (err, foundPhoto)=>{
+        User.findOne({'photos': req.params.id}, (err, foundUser)=>{
             res.render('photos/show.ejs', {
-                photo: onePhoto
-            })
-        }
+                user: foundUser,
+                photo: foundPhoto
+            }) 
+        })
     })
-})
-
+});
 
 // EDIT ROUTE
 router.get('/:id/edit', (req, res) => {

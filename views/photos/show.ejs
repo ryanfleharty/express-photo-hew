@@ -10,6 +10,7 @@
 <a href="/">Home</a>
 <a href="/photos">All Photos</a>
     <h1><%= photo.title %></h1>
+      by: <%user.username%>
       <%=photo.caption%><br>
       <img src="<%=photo.url%>"><br>
     <a href="/photos/<%=photo._id%>/edit">Edit Photo</a>
