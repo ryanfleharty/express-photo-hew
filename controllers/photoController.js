@@ -61,10 +61,10 @@ router.put('/', (req, res) => {
 })
 
 // DELETE ROUTE
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     Photo.findByIdAndDelete(req.params.id, (err, deletedPhoto) => {
         if(err){
-            res.send(err)
+            console.log(err)
         }else{
             res.redirect('/photos')
         }
