@@ -8,13 +8,15 @@
 </head>
 <body>
     <h1>Every Single Photo; You Already Know Tho</h1>
+    <form action="/photos/new" method="GET">
+    <button type="submit">New Photo</button>
+    </form>
     <% photo.forEach((photo)=>{ %>
         <li>
             <a href="/photos/<%=photo._id%>"><%=photo.title%></a>
             <p>
-            <%=photo.url%>
-            <%=photo._id%>
-            <%=photo.caption%>
+            <%=photo.caption%><br>
+            <img src= "<%=photo.url%>">
             
             </p>
             <form action="/photos/<%=photo._id%>?_method=DELETE" method="POST">

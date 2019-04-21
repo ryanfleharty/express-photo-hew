@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Photo Show</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>This One Photo</h1>
+<a href="/">Home</a>
+<a href="/photos">All Photos</a>
+    <h1><%= photo.title %></h1>
+      <%=photo.caption%><br>
+      <img src="<%=photo.url%>"><br>
+    <a href="/photos/<%=photo._id%>/edit">Edit Photo</a>
 </body>
 </html>

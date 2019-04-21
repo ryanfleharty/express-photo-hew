@@ -19,6 +19,33 @@ router.get('/new', (req, res) => {
     res.render('photos/new.ejs')
 });
 
+// SHOW ROUTE
+router.get('/:id', (req, res) => {
+    Photo.findById(req.params.id, (err, onePhoto) => {
+        if(err){
+            res.send(err)
+        }else{
+            res.render('photos/show.ejs', {
+                photo: onePhoto
+            })
+        }
+    })
+})
+
+
+// EDIT ROUTE
+router.get('/:id/edit', (req, res) => {
+    Photo.findById(req.params.id, (err, editPhoto) => {
+        if(err){
+            console.log(err)
+        }else{
+            console.log(editPhoto),
+            res.render('photos/edit.ejs', {photo: editPhoto})
+        }
+    })
+    
+});
+
 
 // CREATE ROUTE
 router.post('/', (req, res) => {
@@ -26,28 +53,11 @@ router.post('/', (req, res) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('/photos', {photo: newPhoto})
+            res.redirect('/photos')
         }
     })
 })
 
-// SHOW ROUTE
-router.get('/:id', (req, res) => {
-    Photo.findById(req.params.id, (err, onePhoto) => {
-        if(err){
-            res.send(err)
-        }else{
-            res.render('photos/:id/show.ejs')
-        }
-    })
-})
-
-
-
-// EDIT ROUTE
-router.get('/:id/edit', (req, res) => {
-    res.render('photos/:id/edit.ejs', {photo: Photo})
-});
 
 // UPDATE ROUTE
 router.put('/', (req, res) => {

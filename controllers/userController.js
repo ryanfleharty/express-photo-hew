@@ -9,7 +9,7 @@ router.get('/', (req, res)=>{
         if(err){
             res.send(err)
         }else{
-            res.render('users/index.ejs')
+            res.render('users/index.ejs', {user: allUsers})
         }
     })
 });
@@ -22,11 +22,11 @@ router.get('/new', (req, res) => {
 
 // CREATE ROUTE
 router.post('/', (req, res) => {
-    User.create(req.body, (err, newPhoto) => {
+    User.create(req.body, (err, newUser) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('users/index.ejs', {user: newUser})
+            res.redirect('/users')
         }
     })
 })
@@ -55,18 +55,18 @@ router.put('/', (req, res) => {
         if(err){
             res.send(err)
         }else{
-            res.redirect('photos/index.ejs', {user: updatedUser})
+            res.redirect('/photos', {user: updatedUser})
         }
     })
 })
 
 // DELETE ROUTE
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
     User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
         if(err){
-            res.send(err)
+            console.log(err)
         }else{
-            res.redirect('users')
+            res.redirect('/users')
         }
     })
 });

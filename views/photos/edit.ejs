@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Photo</title>
+    <title>New Photo</title>
 </head>
 <body>
-    <h1>Adjust that Photo</h1>
+
+<a href="/">Home</a>
+<a href="/photos">All Photos</a>
+
+    <h1>Edit Photo</h1>
+    <form action="/photos/<%=photo._id%>?_method=PUT" method="POST">
+        Title: <input type="text" name="title" value="<%=photo.title%>">
+        Caption: <input type="text" name="caption" value="<%=photo.caption%>">
+        URL: <input type="text" name="url" value="<%=photo.url%>">
+        Date Captured: <input type="Date" name="date">
+        <button type="submit">Edit Photo</button>
+    </form>
+
+
 </body>
 </html>
