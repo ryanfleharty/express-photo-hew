@@ -1,0 +1,58 @@
+* {
+  color: white;
+}
+body {
+  background-color: black
+}
+
+div {
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+input {
+  color: black
+}
+
+h1, h2, h3{
+  text-align: center;
+  text-shadow: 2px 2px blue;
+}
+
+select {
+  color: black
+}
+
+.indexProfilePic {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+
+.profilePhotoList {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+}
+
+.indexList {
+  margin-bottom: 15px;
+  box-shadow: 5px 5px 20px 2px white;
+}
+
+h4 {
+  display: inline-block;
+  margin-right: 30px
+}
+
+.indexLikes {
+  display: inline-block;
+}
+
+button {
+  color: black;
+  margin-left: 40%
+}
