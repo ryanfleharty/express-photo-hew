@@ -1,7 +1,7 @@
 const express = require('express');
-// const mongoose = require('mongoose');
 const router = express.Router();
 const User = require('../../models/users/userSchema');
+const Photo = require('../../models/photos/photoSchema');
 
 
 
@@ -58,7 +58,6 @@ router.get('/:id/edit', (req, res) => {
     })
 });
 
-
 router.put('/:id', (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
         if(err){
@@ -68,17 +67,6 @@ router.put('/:id', (req, res) => {
         }
     })
 });
-
-
-
-
-
-
-
-
-
-
-
 
 //DELETE:
 router.delete('/:id', (req, res) => {
@@ -98,4 +86,4 @@ router.delete('/:id', (req, res) => {
 
 
 
-module.exports = router
+module.exports = router;
