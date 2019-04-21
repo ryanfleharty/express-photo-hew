@@ -29,10 +29,12 @@ router.get('/new', (req, res) => {
 // SHOW ROUTE
 router.get('/:id', (req, res) => {
     Photo.findById(req.params.id, (err, foundPhoto)=>{
-        User.findOne({'photos': req.params.id}, (err, foundUser)=>{
+        User.findOne({"photos": req.params.id}, (err, foundUser)=>{
+            console.log(foundPhoto),
+            console.log(foundUser),
             res.render('photos/show.ejs', {
-                user: foundUser,
-                photo: foundPhoto
+                photo: foundPhoto,
+                user: foundUser
             }) 
         })
     })
