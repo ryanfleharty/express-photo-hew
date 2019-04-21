@@ -141,4 +141,40 @@ router.put('/:id', parser.single('image'), (req,res)=>{
 })
 
 
+
+const usersSeed = [
+    { photos : [("5cbb9664d4c7a008dd256665")],
+      name : "adsfads TEST",
+      description : "dfasdfasd",
+      relationshipStatus : "It's Complicated",
+      profilePicture : "http://res.cloudinary.com/dgvqvmlnk/image/upload/v1555856997/blogApp/v7vtrknxl1yz1pvhvtbs.jpg"
+    },
+    { photos : [("5cbc7e6531ab8b21b540fe81")],
+      name : "TestUSERadsf",
+      description : "This isn't the greatest user in the world, this is just a tribute.",
+      relationshipStatus : "Single",
+      profilePicture : "http://res.cloudinary.com/dgvqvmlnk/image/upload/v1555857066/blogApp/cqcijmy57uxur3ropqn7.jpg"
+    }
+  ];
+const seedUsers = ()=>{
+  usersSeed.forEach(function(user){
+    User.find({}, (err, allUsers)=>{
+      console.log(allUsers.length);
+      if (allUsers.length < 100){
+      User.create(user, (err,createdUser)=>{
+        if (err) {
+          console.log(err);
+        } else {
+          seedUsers();
+        }
+      })
+    } else {
+      console.log('All Done');
+    }
+    })
+  })
+}
+
+
+
 module.exports = router;

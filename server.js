@@ -10,16 +10,6 @@ const photoController     = require('./controllers/photoController');
 const app                 = express()
 require('./db/db.js')
 
-
-// I am doing this so users can upload images
-// from their computer
-
-
-
-
-
-
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use('/users', userController);
@@ -30,6 +20,7 @@ app.use(express.static('public'))
 app.get('/', (req, res)=>{
     res.render("index.ejs");
 })
+
 
 
 
