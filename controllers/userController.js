@@ -33,15 +33,16 @@ router.post('/', (req, res) => {
 
 // SHOW ROUTE
 router.get('/:id', (req, res) => {
-    User.findById(req.params.id, (err, oneUser) => {
+    User.findById(req.params.id)
+    .populate('photos')
+    .exec((err, foundUser)=>{
         if(err){
             res.send(err)
         }else{
-            res.render('users/show.ejs', {user: oneUser})
+            res.render('users/show.ejs', {user: foundUser})
         }
     })
-})
-
+});
 
 
 // EDIT ROUTE

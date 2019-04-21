@@ -10,7 +10,13 @@
 <a href="/">Home</a>
 <a href="/users">All Users</a>
     <h1><%= user.username %></h1>
-      
+    <h2>Photos</h2>
+    <% for (i = 0; i < user.photos.length; i++){%>
+    <p>
+    <a href="/photos/<%=user.photos[i]._id%>"><%=user.photos[i].title%></a>
+    </p>
+     <%}%>
+
     <a href="/users/<%=user._id%>/edit">Edit User</a>
      <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
         <button>DELETE</button>
