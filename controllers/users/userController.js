@@ -13,10 +13,12 @@ router.get('/', (req, res) => {
         } else {
             res.render('users/index.ejs', {users: allUsers});
         }
-    });
-    
+    });  
 });
 
+router.get('/new', (req, res) => {
+    res.render('./users/new.ejs');
+});
 
 //CREATE:
 router.post('/', (req, res) => {
@@ -30,12 +32,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.get('/new', (req, res) => {
-    res.render('./users/new.ejs');
-});
-
-
-
+//READ:
 router.get('/:id', (req, res) => {
     User.findById(req.params.id, (err, foundUser) => {
         if(err){
@@ -48,7 +45,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-
+//UPDATE:
 router.get('/:id/edit', (req, res) => {
     User.findById(req.params.id, (err, updatedUser) => {
         if(err){
@@ -60,6 +57,20 @@ router.get('/:id/edit', (req, res) => {
         }
     })
 });
+
+
+router.put('/:id', (req, res) => {
+    User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
+        if(err){
+            res.send(err);
+        } else {
+            res.redirect('/users')
+        }
+    })
+});
+
+
+
 
 
 
