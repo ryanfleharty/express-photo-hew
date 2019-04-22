@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> I will have all the things! </h1>
+    <ul>
+    <%for(let i = 0; i < photo.length; i++){%>
+    <li><a href = "/photos/<%=photo[i]._id%>"><img src="<%=photo[i].url%>"></a></li>
+    <li><a href = "/photos/<%=photo[i]._id%>"><%=photo[i].title%></a></li>
+    <form action = "/photos/<%=photo[i]._id%>/edit" method = "GET">
+        <button type = "submit">Edit Photo</button>
+    </form>
+    <form action = "/photos/<%=photo[i]._id%>?_method=DELETE" method = "POST">
+        <button type = "submit">Delete Photo</button>
+    </form>
+    <%}%>
+    </ul>
+    <form action="/photos/new" method="GET">
+        <button type = "submit">Add New Photo</button>
+    </form>
+</body>
+</html>

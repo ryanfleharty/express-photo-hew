@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Yay, you made it to edit!!!! </h1>
+    <form action = "/photos/<%=photo._id%>?_method=PUT" method = "POST">
+        <input type = "text" name = "title" value = "<%=photo.title%>">
+        <input type = "text" name = "url" value = "<%=photo.url%>">
+        <input type = "text" name = "caption" value = "<%=photo.caption%>">
+        <input type = "date" name = "date" value = "<%=photo.date%>">
+        <button type = "submit">Update Photo Info</button>
+    </form>
+
+
+
+
+</body>
+</html>
