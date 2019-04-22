@@ -60,5 +60,34 @@ router.put('/:id', (req, res) => {
 
 
 
+// Delete Route
+router.delete('/:id', (req, res) => {
+    Photos.findByIdAndDelete(req.params.id, (error, deletedPhoto) =>{
+      if (error){
+        console.log(error)
+      } else {
+        console.log(deletedPhoto);
+        res.redirect('/photos')
+      }
+    })
+  });
+
+
+// Show Route
+router.get('/:id', (req, res) =>{
+	Photos.findById(req.params.id, (err, foundPhoto)=>{
+		res.render('show.ejs', {
+		id: req.params.id,
+		photo: foundPhoto
+		})
+	});
+
+});
+
+
+
+
+
+
 
 module.exports = router;
