@@ -71,11 +71,11 @@ router.put('/:id', (req, res) => {
 
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
-    User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+    User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
         if(err){
             console.log(err)
         }else{
-            Photo.remove({
+            Photo.deleteMany({
                 _id: {
                     $in: deletedUser.photos
                 }

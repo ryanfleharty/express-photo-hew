@@ -42,15 +42,14 @@ router.get('/:id', (req, res) => {
 
 // EDIT ROUTE
 router.get('/:id/edit', (req, res) => {
-    Photo.findById(req.params.id, (err, editPhoto) => {
-        if(err){
-            console.log(err)
-        }else{
-            console.log(editPhoto),
-            res.render('photos/edit.ejs', {photo: editPhoto})
-        }
-    })
-    
+  Photo.findById(req.params.id, (err, editPhoto)=>{
+      User.find({}, (err, allUsers)=>{
+          res.render('photos/edit.ejs', {
+              user: allUsers,
+              photo: editPhoto
+          })
+      })
+  })
 });
 
 
@@ -73,12 +72,22 @@ router.post('/', (req, res) => {
 
 // UPDATE ROUTE
 router.put('/:id', (req, res) => {
-    Photo.findByIdAndUpdate(req.params.id, req.body, (err, updatedPhoto) => {
-        if(err){
-            res.send(err)
-        }else{
-            res.redirect('/photos')
-        }
+    Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPhoto)=>{
+        User.findOne({'photos': req.params.id}, (err, foundUser)=>{
+            if(foundUser._id.toString() !== req.body.userId){
+                foundUser.photos.remove(req.params.id);
+                foundUser.save((err, savedUser)=>{
+                    User.findById((req.body.userId, (err, newUser)=>{
+                        newUser.photos.push(updatedPhoto._id);
+                        newUser.save((err, savedNewUser)=>{
+                            res.redirect('/photos/' + req.params.id);
+                        })
+                    }))
+                })
+            }else{
+                res.redirect('/photos/' + req.params.id)
+            }
+        })
     })
 })
 
