@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> I will have all the things! </h1>
+    <h1> USER LIBRARY </h1>
     <ul>
-    <%for(let i = 0; i < user.length; i++){%>
-    <li><a href = "/users/<%=user[i]._id%>"><%=user[i].username%></a></li>
-    <form action = "/users/<%=user[i]._id%>/edit" method = "GET">
+    <%for(let i = 0; i < usersOnTheTemplate.length; i++){%>
+    <li><a href = "/users/<%=usersOnTheTemplate[i]._id%>"><%=usersOnTheTemplate[i].username%></a></li>
+    <form action = "/users/<%=usersOnTheTemplate[i]._id%>/edit" method = "GET">
         <button type = "submit">Edit User</button>
     </form>
-    <form action = "/users/<%=user[i]._id%>?_method=DELETE" method = "POST">
+    <form action = "/users/<%=usersOnTheTemplate[i]._id%>?_method=DELETE" method = "POST">
         <button type = "submit">Delete User</button>
     </form>
     <%}%>

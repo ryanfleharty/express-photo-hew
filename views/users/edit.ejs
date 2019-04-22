@@ -6,9 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Yay, you made it to edit!!!! </h1>
-    <form action = "/users/<%=user._id%>?_method=PUT" method = "POST">
-        <input type = "text" name = "username" value = "<%=user.username%>">
+    <h1> Edit User Info </h1>
+    <form action = "/users/<%=userOnTheTemplate._id%>?_method=PUT" method = "POST">
+        <input type = "text" name = "username" value = "<%=userOnTheTemplate.username%>">
         <button type = "submit">Update User</button>
     </form>
 </body>
