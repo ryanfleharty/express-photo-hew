@@ -12,7 +12,7 @@
     <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="/photos">
         <img src="http://www.stickpng.com/assets/thumbs/584abf432912007028bd9337.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        PhotoAPP <span>"where your photos are located on the internet"</span>
+        PhotoAPP <span>"in Russia, photos take YOU"</span>
     </a>
     <div><a href="/users">All Users</a></div>
     <div><a href="users/new/">+Add User</a></div>
@@ -26,10 +26,10 @@
         <% for(let i = 0; i < users.length; i++){ %>
 
                 <div class="card" style="width: 18rem;">
-                <img src="https://www.bookmydesign.com/auth-image/medium/blank-user.png?resize=202%2C60" class="card-img-top">
+                <img src="<%=users[i].img%>" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/users/<%=users[i]._id%>"><%=users[i].name; %></a></h5>
-                    <p class="card-text">Test Words</p>
+                    <h5 class="card-title"><a href="/users/<%=users[i]._id%>"><%=users[i].name%></a></h5>
+                    <p class="card-text"><%=users[i].bio%></p>
                     <div class="flex-container"><a href="/users/<%=users[i]._id%>/edit"><button>Edit</button></a>
                     <a><form action="/users/<%=users[i]._id%>?_method=DELETE" method="POST">
                         <button>Remove</button>
