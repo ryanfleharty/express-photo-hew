@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <% include ../partials/partial %>
+
+    <title>New Photo</title>
+</head>
+<body>
+
+    <h1>Submit a New Pic</h1>
+    <form action="/photos" method="POST">
+        <select name="userId">
+            <% for(let i = 0; i < user.length; i++){%>
+                <option value="<%=user[i]._id%>"><%=user[i].username%></option>
+            <%}%>
+        </select><br>
+
+        Title: <input type="text" name="title">
+        Caption: <input type="text" name="caption">
+        URL: <input type="text" name="url">
+        Date Captured: <input type="Date" name="date">
+        <button type="submit">Create Photo</button>
+    </form>
+
+
+</body>
+</html>

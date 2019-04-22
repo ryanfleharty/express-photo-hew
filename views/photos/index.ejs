@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <% include ../partials/partial %>
+    <title>Photo Index</title>
+</head>
+<body>
+    <h1>Photo Index</h1>
+    <form action="/photos/new" method="GET">
+    <button type="submit">New Photo</button>
+    </form>
+    <% photo.forEach((photo)=>{ %>
+
+        <div class="card" style="width: 18rem;">
+        <img src="<%=photo.url%>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title"><%=photo.title%></h5>
+            <p class="card-text">
+             <%= photo.caption %>
+            </p>
+            <a href="/photos/<%=photo._id%>/edit" class="btn btn-primary">Edit</a>
+        </div>
+        </div>
+
+
+           
+        </li>
+    <% }) %>
+</body>
+</html>

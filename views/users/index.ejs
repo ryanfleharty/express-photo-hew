@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <% include ../partials/partial %>
+
+    <title>User Index</title>
+</head>
+<body>
+
+    <h1>All Users</h1>
+    <form action="/users/new" method="GET">
+    <button type="submit">New User</button>
+    </form>
+    <% user.forEach((user)=>{ %>
+        <li>
+            <a href="/users/<%=user._id%>"><%=user.username%></a>
+            <p>
+            
+            </p>
+        </li>
+    <% }) %>
+</body>
+</html>
