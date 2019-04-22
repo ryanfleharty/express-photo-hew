@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/users">USER LIST</a>
+    <h1> User Info </h1>
+    <%=userOnTheTemplate.username%></br>
+ 
+    <ul>
+        <h2>Here are <%=userOnTheTemplate.username%>'s photos</h2>
+        <% for (let i = 0; i < userOnTheTemplate.photos.length; i++) {%>
+        <li><a href="/photos/<%=userOnTheTemplate.photos[i]._id%>"><img src="<%=userOnTheTemplate.photos[i].url%>"></a></li>
+        <%}%>
+    </ul>
+    <a href="/users/<%=userOnTheTemplate._id%>/edit">CHANGE THIS USER</a>
+
+    <a href="/">HOME</a>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> USER LIBRARY </h1>
+    <ul>
+    <%for(let i = 0; i < usersOnTheTemplate.length; i++){%>
+    <li><a href = "/users/<%=usersOnTheTemplate[i]._id%>"><%=usersOnTheTemplate[i].username%></a></li>
+    <form action = "/users/<%=usersOnTheTemplate[i]._id%>/edit" method = "GET">
+        <button type = "submit">Edit User</button>
+    </form>
+    <form action = "/users/<%=usersOnTheTemplate[i]._id%>?_method=DELETE" method = "POST">
+        <button type = "submit">Delete User</button>
+    </form>
+    <%}%>
+    </ul>
+    <form action="/users/new" method="GET">
+        <button type = "submit">Add New User</button>
+    </form>
+</body>
+</html>
