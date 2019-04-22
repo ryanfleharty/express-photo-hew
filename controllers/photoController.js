@@ -85,11 +85,17 @@ router.put('/:id', (req, res) => {
 // DELETE ROUTE
 router.delete('/:id', (req, res) => {
     Photo.findByIdAndDelete(req.params.id, (err, deletedPhoto) => {
-        if(err){
-            console.log(err)
-        }else{
-            res.redirect('/photos')
-        }
+        User.findOne({'photos': req.params.id}, (err, foundUser)=>{
+            if(err){
+                console.log(err)
+            }else{
+                foundUser.photos.remove(req.params.id);
+                foundUser.save((err, updatedUser)=>{
+                    console.log(updatedUser);
+                    res.redirect('/photos')
+                })
+            }
+        })
     })
 });
 
