@@ -1,8 +1,9 @@
+/* eslint-disable no-shadow */
 // requires
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const Cat = require('../models/Photo');
+const Photo = require('../models/Photo');
 
 // INDEX
 router.get('/', (req, res) => {
@@ -18,7 +19,6 @@ router.get('/', (req, res) => {
     }
   });
 });
-
 
 // NEW
 router.get('/new', (req, res) => {
@@ -68,9 +68,9 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// SHOW
+// SHOW ***NEED TO REFACTOR***
 router.get('/:id', (req, res) => {
-  User.findById(req.params.id, (err, foundUser) => {
+  User.findById(req.params.id).populate('photos').exec((err, foundUser) => {
     if (err) {
       console.log(err);
       res.send(err);
@@ -83,7 +83,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// DELETE
+// DELETE ***NEED TO REFACTOR***
 router.delete('/:id', (req, res) => {
   User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
     if (err) {
@@ -91,7 +91,16 @@ router.delete('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(deletedUser);
-      res.redirect('/users');
+      Photo.deleteMany({ _id: { $in: deletedUser.photos } }, (err, deletedData) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(deletedUser);
+          console.log(deletedData);
+          res.redirect('/users');
+        }
+      });  
     }
   });
 });

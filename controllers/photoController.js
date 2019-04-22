@@ -1,5 +1,9 @@
+/* eslint-disable no-shadow */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-underscore-dangle */
 // requires
 const express = require('express');
+
 const router = express.Router();
 const Photo = require('../models/Photo');
 const User = require('../models/User');
@@ -21,7 +25,17 @@ router.get('/', (req, res) => {
 
 // NEW
 router.get('/new', (req, res) => {
-  res.render('photos/new.ejs');
+  User.find({}, (err, foundUsers) => {
+    if (err) {
+      console.log(err);
+      res.send(err);
+    } else {
+      console.log(foundUsers);
+      res.render('photos/new.ejs', {
+        users: foundUsers,
+      });
+    }
+  });
 });
 
 // CREATE
@@ -32,7 +46,24 @@ router.post('/', (req, res) => {
       res.send(err);
     } else {
       console.log(createdPhoto);
-      res.redirect('/photos');
+      User.findById(req.body.userId, (err, foundUser) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(foundUser);
+          foundUser.photos.push(createdPhoto._id);
+          foundUser.save((err, savedUser) => {
+            if (err) {
+              console.log(err);
+              res.send(err);
+            } else {
+              console.log(savedUser);
+              res.redirect('/photos');
+            }
+          });
+        }
+      });
     }
   });
 });
@@ -87,14 +118,32 @@ router.get('/:id/edit', (req, res) => {
     } else {
       console.log(foundPhoto);
 
-      const month = convertMonthTextToNumStr(foundPhoto.createdDate.toString().slice(4, 7));
-      const day = foundPhoto.createdDate.toString().slice(8, 10);
-      const year = foundPhoto.createdDate.toString().slice(11, 15);
+      const month = convertMonthTextToNumStr(foundPhoto.uploadDate.toString().toLocaleUpperCase().slice(4, 7));
+      const day = foundPhoto.uploadDate.toString().slice(8, 10);
+      const year = foundPhoto.uploadDate.toString().slice(11, 15);
       const datePickerFormat = `${year}-${month}-${day}`;
 
-      res.render('photos/edit.ejs', {
-        photo: foundPhoto,
-        datePickerFormat,
+      User.find({ photos: req.params.id }, (err, foundOldUser) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(foundOldUser);
+          User.find({}, (err, foundAllUsers) => {
+            if (err) {
+              console.log(err);
+              res.send(err);
+            } else {
+              console.log(foundAllUsers);
+              res.render('photos/edit.ejs', {
+                photo: foundPhoto,
+                oldUser: foundOldUser,
+                users: foundAllUsers,
+                datePickerFormat,
+              });
+            }
+          });
+        }
       });
     }
   });
@@ -108,7 +157,38 @@ router.put('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(updatedPhoto);
-      res.redirect('/photos');
+      User.findOne({ photos: req.params.id }, (err, foundUser) => {
+        if (foundUser._id.toString() !== req.body.userId) {
+          foundUser.photos.remove(req.params.id);
+          foundUser.save((err, savedOldUser) => {
+            if (err) {
+              console.log(err);
+              res.send(err);
+            } else {
+              console.log(savedOldUser);
+              User.findById(req.body.userId, (err, foundUpdatedUser) => {
+                if (err) {
+                  console.log(err);
+                  res.send(err);
+                } else {
+                  foundUpdatedUser.photos.push(updatedPhoto._id);
+                  foundUpdatedUser.save((err, savedUpdatedUser) => {
+                    if (err) {
+                      console.log(err);
+                      res.send(err);
+                    } else {
+                      console.log(savedUpdatedUser);
+                      res.redirect(`/photos/${req.params.id}`);
+                    }
+                  });
+                }
+              });
+            }
+          });
+        } else {
+          res.redirect(`/photos/${req.params.id}`);
+        }
+      });
     }
   });
 });
@@ -121,8 +201,17 @@ router.get('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(foundPhoto);
-      res.render('photos/show.ejs', {
-        photo: foundPhoto,
+      User.findOne({ photos: req.params.id }, (err, foundUser) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(foundUser);
+          res.render('photos/show.ejs', {
+            photo: foundPhoto,
+            user: foundUser,
+          });
+        }
       });
     }
   });
@@ -136,7 +225,24 @@ router.delete('/:id', (req, res) => {
       res.send(err);
     } else {
       console.log(deletedPhoto);
-      res.redirect('/photos');
+      User.findOne({ photos: req.params.id }, (err, foundUser) => {
+        if (err) {
+          console.log(err);
+          res.send(err);
+        } else {
+          console.log(foundUser);
+          foundUser.photos.remove(req.params.id);
+          foundUser.save((err, savedUser) => {
+            if (err) {
+              console.log(err);
+              res.send(err);
+            } else {
+              console.log(savedUser);
+              res.redirect('/photos');
+            }
+          });
+        }
+      });
     }
   });
 });
