@@ -3,12 +3,12 @@ const app            = express();
 const bodyParser     = require('body-parser');
 const methodOverride = require('method-override');
 require('./db/db')
-const Character = require('./controllers/photos');
+const Photos = require('./controllers/photos');
 
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
-app.use('/', Character);
+app.use('/photos', Photos);
 
 
 app.listen(3000, () => {

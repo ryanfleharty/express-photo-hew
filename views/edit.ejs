@@ -5,11 +5,12 @@
 
 </head>
 <body>
-  <header></br>
-    <h1>Edit Photo Page</h1></br>
-
-  <main>
-
-  </main>
+    <H1>Edit Your Photo Here</H1>
+    <form action="/photos/<%=id%>?_method=PUT" method="POST">
+    URL: <input type="text" name="url" value="<%=photo.url%>">
+    Title: <input type="text" name="title" value="<%=photo.title%>">
+    Description: <input type="text" name="description" value="<%=photo.description%>">
+    <button type='submit'>Submit</button>
+    </form>
 </body>
 </html> 
