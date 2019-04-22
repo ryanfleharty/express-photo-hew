@@ -25,7 +25,10 @@
         <label for="formGroupExampleInput">User Name</label>
         <input type="text" class="form-control" id="formGroupExampleInput" name="name" value="<%=user.name%>">
     </div>
-
+    <div class="form-group">
+        <label for="formGroupExampleInput">Password</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="password">
+    </div>
     <div class="form-group">
         <label for="formGroupExampleInput">User Bio</label>
         <input type="text" class="form-control" id="formGroupExampleInput" name="bio" value="<%=user.bio%>">
@@ -33,7 +36,7 @@
 
     <div class="form-group">
         <label for="formGroupExampleInput">User Photo</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" name="img">
+        <input type="text" class="form-control" id="formGroupExampleInput" name="img" value="<%=user.img%>">
     </div>
 
     <button class="editSubmit" type="submit">Submit Changes</button>
