@@ -18,22 +18,24 @@
     </nav>
 
 
-
-
+    <div class="show-flex user-show-header">
+    <div class="flex-container-column">
     <h1><%=user.name%></h1>
-
+    <div><p><%=user.bio%></p></div>
+    </div>
+    </div>
+    <div class="show-flex">
+    <img src="https://www.bookmydesign.com/auth-image/medium/blank-user.png?resize=202%2C60">
         <ul>
-        <h2>Here are <%=user.name%>'s photos</h2>
+        <h3>Here are <%=user.name%>'s photos</h3>
         <% for (let i = 0; i < user.photos.length; i++) {%>
         <li><a href="/photos/<%=user.photos[i]._id%>"><%=user.photos[i].title%></a></li>
         <%}%>
         </ul>
-
+    </div>
     <div class="show-flex">
     <div class='flex-container-column'>
-        
-        <div>MAYBE HAVE A USER BIO HERE</p></div>
-        <a href="/users/<%=user._id%>/edit"><button>Edit/Delete</button></a>
+        <a class="user-show-button" href="/users/<%=user._id%>/edit"><button>Edit/Delete</button></a>
     </div>
     </div>
 

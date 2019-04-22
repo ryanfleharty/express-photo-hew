@@ -7,6 +7,10 @@ h1 {
     padding: 30px;
 }
 
+a {
+    color: black;
+}
+
 img {
     max-height: 200px;
 }
@@ -47,6 +51,7 @@ button:hover {
 .flex-container-column {
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .show-flex {
@@ -122,5 +127,13 @@ margin-bottom: 15px;
 }
 
 .editSubmit {
+    margin-top: 40px;
+}
+
+.user-show-header {
+    margin-bottom: 20px;
+}
+
+.user-show-button {
     margin-top: 40px;
 }
