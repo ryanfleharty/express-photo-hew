@@ -20,45 +20,35 @@ router.get('/', (req, res)=> {
 
 // new route
 router.get('/new', (req, res) => {
-    Photo.findById(req.params.id, (err, newPhotoUpload) => {
+    User.find({}, (err, users) => {
         if (err){
             res.send(err);
         } else {
-            res.render('photo/new.ejs')
+            res.render('photo/new.ejs', {
+                users: users,
+            })
         }    
     })
 });
 
-// // create route
-// router.post('/', (req, res) => {
-//     Photo.create(req.body, (err, newPhotoUpload) => {
-//         if (err){
-//             res.send(err);
-//         } else {
-//             res.redirect('/photos')
-//         }  
-//     })
-// });
-
 // create route
 router.post('/', (req, res) => {
     Photo.create(req.body, (err, newPhotoUpload) => {
-        console.log(newPhotoUpload._id)
-        console.log(`photo added by user ${req.body.userId}`);
-        User.findOne(req.body.userId, function (err, userFound){
-            console.log(userFound)
-            console.log(userFound.photos)
-            userFound.photos.push(newPhotoUpload._id);
-            userFound.save((err, savedUser) => {
-                if (err){
-                    res.send(err);
-                } else {
-                    console.log(savedUser);
-                    res.redirect('/photos')
-                }  
-            })
+        console.log(`photo added by user ${req.body.username}`);
+        User.findById(req.body.username, (err, userFound) => {
+            if (err) {
+                res.send(err);
+            } else {
+                userFound.photos.push(newPhotoUpload);
+                userFound.save((err, savedUser) => {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        res.redirect('/photos');
+                    }
+                })
+            }
         })
-
     })
 });
 

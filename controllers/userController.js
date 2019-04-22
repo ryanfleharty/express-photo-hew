@@ -62,13 +62,18 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 
 // show route
 router.get('/:id', (req, res) => {
-    User.findById(req.params.id, (err, user) => {
-        Photo.findById(req.params.id, (err, photo) => {
+    User.findById(req.params.id)
+    .populate('photos')
+    .exec((err, user) => {
+        if(err){
+            res.send(err);
+        } else {
+            Photo.findById()
+            console.log(user);
             res.render('user/show.ejs', {
                 user: user,
-                photo: photo
             })
-        })
+        }
     })
 });
 

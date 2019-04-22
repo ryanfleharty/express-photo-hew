@@ -37,11 +37,15 @@
             <h1>Upload a New Photo</h1>
                 <form action="/photos" method="post">
                 <div class="form-group">
+                    <label>Username</label>
+                    <select name="username">
+                    <% for (let i = 0; i < users.length; i++) {%>
+                        <option value="<%= users[i]._id %>"><%= users[i].username %></option>
+                    <% } %>
+                </div>
+                <div class="form-group">
                     *Photo URL <input type="text" name="url" placeholder="photo url">
                 </div> 
-                <div class="form-group">
-                    *Username <input type="text" name="user.username" placeholder="username">
-                </div>
                 <div class="form-group">
                     Photo Title <input type="text" name="title" placeholder="something people want to look at">
                 </div>

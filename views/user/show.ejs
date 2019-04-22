@@ -37,9 +37,8 @@
                 <h1><%= user.username %></h1>
                 <div><img src="<%= user.profilePhoto %>"></div>
                 <div>
-                figure out how to show images, match user.photos id to photo id url
                 <% for (let i = 0; i < user.photos.length; i++) { %>
-                        <img src="<%= user.photos[i].url %>"><br />
+                        <a href="/photos/<%= user.photos[i]._id %>"><img src="<%= user.photos[i].url %>"></a>
                 <% } %>
                 </div>
                 <div>
