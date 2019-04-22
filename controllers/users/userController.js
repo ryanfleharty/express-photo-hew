@@ -45,28 +45,7 @@ router.get('/:id', (req, res) => {
     })
 });
 
-//UPDATE:
-router.get('/:id/edit', (req, res) => {
-    User.findById(req.params.id, (err, updatedUser) => {
-        if(err){
-            res.send(err);
-        } else {
-            res.render('./users/edit.ejs', {
-                users: updatedUser
-            })
-        }
-    })
-});
 
-router.put('/:id', (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
-        if(err){
-            res.send(err);
-        } else {
-            res.redirect('/users')
-        }
-    })
-});
 
 //DELETE:
 router.delete('/:id', (req, res) => {

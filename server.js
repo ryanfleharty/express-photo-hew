@@ -10,19 +10,10 @@ const bodyParser = require('body-parser');
 
 
 //Middleware:
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use('/users', userController);
 app.use('/photos', photoController);
-
-//Render the homepage:
-// app.get('/', (req, res) => {
-//     res.render('./users/home.ejs')
-// });
-
-
-
 
 
 app.listen(3000, () => {
