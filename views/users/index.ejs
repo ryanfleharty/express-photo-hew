@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Photo Index</title>
+     <% include ../partials/partial %>
+
+    <title>User Index</title>
 </head>
 <body>
-<a href="/">Home</a>
+
     <h1>All Users</h1>
     <form action="/users/new" method="GET">
     <button type="submit">New User</button>
@@ -18,9 +20,6 @@
             <p>
             
             </p>
-            <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
-                <button>DELETE</button>
-            </form>
         </li>
     <% }) %>
 </body>

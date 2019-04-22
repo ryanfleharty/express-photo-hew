@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+     <% include ../partials/partial %>
+
+    <title>Show User</title>
 </head>
 <body>
-<a href="/">Home</a>
-<a href="/users">All Users</a>
-    <h1><%= user.username %></h1>
-    <h2>Photos</h2>
+
+    <h1><%= user.username %>'s Photos</h1>
+   
     <% for (i = 0; i < user.photos.length; i++){%>
     <p>
     <a href="/photos/<%=user.photos[i]._id%>"><%=user.photos[i].title%></a>
     </p>
      <%}%>
 
-    <a href="/users/<%=user._id%>/edit">Edit User</a>
+    <form action="/users/<%=user._id%>/edit" method="GET">
+        <button type="submit">Edit User</button>
+    </form>
+
      <form action="/users/<%=user._id%>?_method=DELETE" method="POST">
         <button>DELETE</button>
     </form>
