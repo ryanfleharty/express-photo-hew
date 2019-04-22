@@ -10,27 +10,52 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
+    <nav class="navbar sticky-top navbar-light bg-info">
+        <a class="navbar-brand" href="/"><h2 id="title">So-So-Photo</h2></a>
+        <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <h4>Photos</h4>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/photos">Photos</a>
+                    <a class="dropdown-item" href="/photos/new">Add New Photo</a>
+              </div>
+              <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <h4>Users</h4>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/users">Users</a>
+                        <a class="dropdown-item" href="/users/new">Sign Up</a>
+                        <a class="dropdown-item" href="/users/login">Login</a>
+                  </div>
+      </nav>
 <div class="container-fluid">
-    <div>
-        <div class="nav">
-        <a href="/"><h2>Home</h2></a>
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-6">
+            <div class="center-text"> 
+            <h1>Upload a New Photo</h1>
+                <form action="/photos" method="post">
+                <div class="form-group">
+                    *Photo URL <input type="text" name="url" placeholder="photo url">
+                </div> 
+                <div class="form-group">
+                    *Username <input type="text" name="user.username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    Photo Title <input type="text" name="title" placeholder="something people want to look at">
+                </div>
+                <div class="form-group">
+                    Photo Description <input type="text" name="description" placeholder="tell us about what's in the photo">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info" type="submit">Upload Photo</button>
+                </div>
+                </form>
+            *required
+            New photos are added to oldest user. how to add to specific user with login?
+            </div>
         </div>
-        <div class="nav">
-        <a href="/photos"><h2>Photos</h2></a>
-        </div>
-        <div class="nav">
-        <a href="/users"><h2>Users</h2></a>
-        </div>
-        <h1>Upload a New Photo</h1>
-        <form action="/photos" method="post">
-            <div>*Photo URL <input type="text" name="url" placeholder="photo url"></div>
-            <div>*Username <input type="text" name="user.username" placeholder="username"></div>
-            <div>Photo Title <input type="text" name="title" placeholder="something people want to look at"></div>
-            <div>Photo Description <input type="text" name="description" placeholder="tell us about what's in the photo"></div>
-            <div><button class="btn btn-info" type="submit">Upload Photo</button></div>
-        </form>
-        *required
-        New photos are added to oldest user. how to add to specific user with login?
     </div>
 </div>
 

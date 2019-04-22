@@ -10,24 +10,45 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
+    <nav class="navbar sticky-top navbar-light bg-info">
+        <a class="navbar-brand" href="/"><h2 id="title">So-So-Photo</h2></a>
+        <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <h4>Photos</h4>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/photos">Photos</a>
+                    <a class="dropdown-item" href="/photos/new">Add New Photo</a>
+              </div>
+              <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <h4>Users</h4>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/users">Users</a>
+                        <a class="dropdown-item" href="/users/new">Sign Up</a>
+                        <a class="dropdown-item" href="/users/login">Login</a>
+                  </div>
+      </nav>
 <div class="container-fluid">
-    <div>
-        <div class="nav">
-        <a href="/"><h2>Home</h2></a>
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-6">
+            <div class="center-text">  
+                <h1>Sign Up</h1>
+                <form action="/users" method="post">
+                    <div class="form-group">
+                    *Username <input type="text" name="username" placeholder="something creative">
+                    </div>
+                    <div class="form-group">
+                    *Password <input type="text" name="password" placeholder="something secret">
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-info" type="submit">Sign Up</button>
+                    </div>
+                </form>
+                <small>*required</small>
+            </div>
         </div>
-        <div class="nav">
-        <a href="/photos"><h2>Photos</h2></a>
-        </div>
-        <div class="nav">
-        <a href="/users"><h2>Users</h2></a>
-        </div>
-        <h1>Sign Up</h1>
-        <form action="/users" method="post">
-            <div>*Username <input type="text" name="username" placeholder="something creative"></div>
-            <div>*Password <input type="text" name="password" placeholder="something secret"></div>
-            <div><button class="btn btn-info" type="submit">Sign Up</button></div>
-        </form>
-        *required
     </div>
 </div>
 
