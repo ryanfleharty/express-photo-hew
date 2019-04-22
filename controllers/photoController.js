@@ -29,14 +29,36 @@ router.get('/new', (req, res) => {
     })
 });
 
+// // create route
+// router.post('/', (req, res) => {
+//     Photo.create(req.body, (err, newPhotoUpload) => {
+//         if (err){
+//             res.send(err);
+//         } else {
+//             res.redirect('/photos')
+//         }  
+//     })
+// });
+
 // create route
 router.post('/', (req, res) => {
     Photo.create(req.body, (err, newPhotoUpload) => {
-        if (err){
-            res.send(err);
-        } else {
-            res.redirect('/photos')
-        }  
+        console.log(newPhotoUpload._id)
+        console.log(`photo added by user ${req.body.userId}`);
+        User.findOne(req.body.userId, function (err, userFound){
+            console.log(userFound)
+            console.log(userFound.photos)
+            userFound.photos.push(newPhotoUpload._id);
+            userFound.save((err, savedUser) => {
+                if (err){
+                    res.send(err);
+                } else {
+                    console.log(savedUser);
+                    res.redirect('/photos')
+                }  
+            })
+        })
+
     })
 });
 
@@ -51,6 +73,7 @@ router.get('/:id', (req, res) => {
             } else {
                 res.render('photo/show.ejs', {
                     photo: photoToShow,
+                    user: user,
                 })
             }  
         })
@@ -85,11 +108,18 @@ router.put('/:id', (req, res) => {
 // delete route
 router.delete('/:id', (req, res) => {
     Photo.findByIdAndDelete(req.params.id, (err, photoToDelete) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.redirect('/photos')
-        }
+        console.log(photoToDelete);
+        User.findOne({'photos': req.params.id}, (err, userFound) => {
+            if (err) {
+                res.send(err);
+            } else {
+                userFound.photos.remove(req.params.id);
+                userFound.save((err, updatedUser) => {
+                    console.log(updatedUser);
+                    res.redirect('/photos')
+                })
+            }
+        })
     })
 });
 

@@ -63,8 +63,11 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 // show route
 router.get('/:id', (req, res) => {
     User.findById(req.params.id, (err, user) => {
-        res.render('user/show.ejs', {
-            user: user,
+        Photo.findById(req.params.id, (err, photo) => {
+            res.render('user/show.ejs', {
+                user: user,
+                photo: photo
+            })
         })
     })
 });
