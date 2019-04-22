@@ -74,6 +74,7 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedPhoto)=>{
         User.findOne({'photos': req.params.id}, (err, foundUser)=>{
+            console.log(foundUser);
             if(foundUser._id.toString() !== req.body.userId){
                 foundUser.photos.remove(req.params.id);
                 foundUser.save((err, savedUser)=>{

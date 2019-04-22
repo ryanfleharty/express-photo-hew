@@ -4,10 +4,11 @@ const userController = require('./controllers/userController');
 const photoController = require('./controllers/photoController');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
 
-
-
+app.use(morgan('short'));
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 
