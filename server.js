@@ -1,6 +1,5 @@
 const express         = require('express');
 const app             = express();
-const mongoose        = require('mongoose');
 const photoController = require('./controllers/photos');
 
 const bodyParser      = require('body-parser');
