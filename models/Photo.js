@@ -7,6 +7,8 @@ const photoSchema = new mongoose.Schema({
   img: { type: String, required: true },
 });
 
+photoSchema.index({ title: 'text', topic: 'text' });
+
 const Photo = mongoose.model('Photo', photoSchema);
 
 module.exports = Photo;

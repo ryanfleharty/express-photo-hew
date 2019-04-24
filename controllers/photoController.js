@@ -23,6 +23,26 @@ router.get('/', (req, res) => {
   });
 });
 
+// SEARCH route
+router.get('/search', (req, res) => {
+  Photo.find(
+    { $text: { $search: req.query.title } },
+    { score: { $meta: 'textScore' } })
+    .sort({ score: { $meta: 'textScore' } })
+    .exec((err, matchingPhotos) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(req.query.title);
+        console.log(matchingPhotos);
+        res.render('photos/search.ejs', {
+          photos: matchingPhotos,
+        });
+      }
+    });
+});
+
 // NEW
 router.get('/new', (req, res) => {
   User.find({}, (err, foundUsers) => {

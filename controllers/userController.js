@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 // requires
 const express = require('express');
+
 const router = express.Router();
 const User = require('../models/User');
 const Photo = require('../models/Photo');
@@ -18,6 +19,26 @@ router.get('/', (req, res) => {
       });
     }
   });
+});
+
+// SEARCH route
+router.get('/search', (req, res) => {
+  User.find(
+    { $text: { $search: req.query.name } },
+    { score: { $meta: 'textScore' } })
+    .sort({ score: { $meta: 'textScore' } })
+    .exec((err, matchingUsers) => {
+      if (err) {
+        console.log(err);
+        res.send(err);
+      } else {
+        console.log(req.query.name);
+        console.log(matchingUsers);
+        res.render('users/search.ejs', {
+          users: matchingUsers,
+        });
+      }
+    });
 });
 
 // NEW
@@ -100,7 +121,7 @@ router.delete('/:id', (req, res) => {
           console.log(deletedData);
           res.redirect('/users');
         }
-      });  
+      });
     }
   });
 });

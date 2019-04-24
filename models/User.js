@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Photo = require('./Photo');
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -7,6 +6,8 @@ const userSchema = new mongoose.Schema({
   photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Photo' }],
   profileImage: { type: String, required: false },
 });
+
+userSchema.index({ name: 'text' });
 
 const User = mongoose.model('User', userSchema);
 
