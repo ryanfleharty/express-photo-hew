@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Photos Index  </h1>
+    Photographer:
+    <ul>
+            <% for(let i = 0; i < photos.length; i++){ %>
+                <li>
+                 <a href="/photos/<%=photos[i]._id%>"><%=photos[i].userName; %></a>
+                 <form action="/photos/<%=photos[i]._id%>?_method=DELETE" method="POST">
+                      <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    <a href='/photos/new'> Make New Photo</a>
+</body>
+</html>
