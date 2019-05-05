@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Photos = require('../models/photos');
+const Users = require('../models/users');
 
 
 
@@ -20,21 +21,35 @@ router.get('/', (req, res) => {
 
 // New Route
 router.get('/new', (req, res) =>{
-	res.render('../views/new.ejs')
-})
+    Users.find({}, (err, allUsers) => {
+	   res.render('../views/new.ejs',{
+            users: allUsers
+       })
+    })
+});
 
 
 // Create Route
 router.post('/', (req, res) => {
-    Photos.create(req.body, (error, newPhoto) => {
-        if (error){
-            console.log(error)
-        } else {
-            console.log(newPhoto);
-            res.redirect('/photos')
-        }
+    Users.findById(req.body.userId, (err, foundUser)=>{
+
+
+        Photos.create(req.body, (error, newPhoto) => {
+            if (error){
+                console.log(error)
+            } else {
+            foundUser.photos.push(newPhoto);
+            foundUser.save((err, data) => {
+                res.redirect('/photos');
+                username: foundUser;        
+           });
+        }            
     })
-});
+    });
+    });
+
+
+
 
 // Edit Route
 router.get('/:id/edit', (req, res) =>{
@@ -76,14 +91,43 @@ router.delete('/:id', (req, res) => {
 // Show Route
 router.get('/:id', (req, res) =>{
 	Photos.findById(req.params.id, (err, foundPhoto)=>{
-		res.render('show.ejs', {
-		id: req.params.id,
-		photo: foundPhoto
-		})
-	});
+        Users.findOne({'photos': req.params.id}, (err, foundUser) => {
+                    res.render('show.ejs', {
+                        photo: foundPhoto,
+                        user: foundUser
 
+                    });
+                    console.log(foundUser)
+                });
+            });
+        });
+
+
+router.get('/:id', (req, res) => {
+    Photos.findById(req.params.id, (err, foundPhoto) => {
+        console.log(foundPhoto, ' this is foundPhoto');
+        // Find the user of the photo
+        Users.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+            console.log(foundUser, ' this is foundUser');
+            res.render('photos/show.ejs', {
+                photo: foundPhoto,
+                user: foundUser
+            });
+        });
+    });
 });
 
+
+
+
+// New Route
+router.get('/new', (req, res) =>{
+    Users.find({}, (err, allUsers) => {
+       res.render('../views/new.ejs',{
+            users: allUsers
+       })
+    })
+});
 
 
 
