@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+
+    <h1>Photo Show Page</h1></br>
+		<h2>Posted by <%=user.username%></h2>
+
+  			<img src="<%= photo.url %>">
+            	<form action="/photos/<%=photo.id%>?_method=DELETE" method="POST">
+                	<button>Delete Photo</button>
+            	</form>
+           	 	<a href="/photos/<%=photo._id%>/edit"><button>Edit</button></a>
+
+</body>
+</html> 
+
+

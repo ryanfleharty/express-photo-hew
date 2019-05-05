@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+    <H1>Edit Your User Info Here</H1>
+    <form action="/photos/user/?_method=PUT" method="POST">
+    Username: <input type="text" name="name" value="<%=user.name%>">
+    Password: <input type="password" name="password" value="<%=user.password%>">
+    <button type='submit'>Submit</button>
+    </form>
+</body>
+</html> 

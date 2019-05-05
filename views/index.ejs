@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+    <h1>Index Photo Page</h1>
+        <ul>
+        <% for(let i = 0; i < photos.length; i++){ %>
+            <li>
+                <a href="/photos/<%=photos[i]._id%>"><%=photos[i].title; %></a><br>
+                <a href="/photos/<%=photos[i]._id%>/edit"><button>Edit</button></a>
+                <form action="/photos/<%=photos[i]._id%>?_method=DELETE" method="POST">
+                	<button>Remove</button>
+                </form>
+            </li>
+        <% } %>
+    	</ul>
+    	<form action="photos/new" method="get">
+    		<button>Add Photo</button>
+    	</form>
+</body>
+</html> 

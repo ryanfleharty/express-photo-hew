@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+
+	<h1>User Index Page</h1>
+
+		<a href="/users/new" role="button">Add Your Info</a>
+			<ul>
+			<% for(let i = 0; i < users.length; i++) { %>
+				<li><a href="/users/<%= users[i].id%>"><%= users[i].username %></a></li>
+				<% } %>
+			</ul>
+</body>
+</html> 

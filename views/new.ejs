@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+  <header></br>
+    <h1>Add a Photo Here</h1>
+    <form action="/photos" method="POST">
+    	User: <select name="userId">
+			<% for (let i = 0; i < users.length; i++) { %>
+				<option value="<%=users[i]._id%>"><%=users[i].username%></option>
+			<% } %>
+		</select>
+        <p>URL: <input type='text' name='url'></p>
+        <p>Title: <input type='text' name='title'></p>
+        <p>Description: <input type='text' name='description'></p>
+        <button type='submit'>Submit</button>
+    </form>
+</body>
+</html> 
