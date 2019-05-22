@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <header>
+            <h1>New Photos</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/photo">Photos</a>
+                    </li>
+                
+                </ul>
+            </nav>
+        </header>
+
+    <main>
+
+        <form action="/photo" method="POST">
+            <select name="username">
+                    <% for (let i = 0; i < userOnTemplate.length; i++) { %>
+          
+                      <option value="<%=userOnTemplate[i]._id%>"><%=userOnTemplate[i].username%></option>
+          
+                    <%}%>
+          
+                  </select><br/>
+
+
+     
+        Photo url: <input type="text" name="url" />
+        Title: <input type="text" name="title" />
+        <button type="submit">Submit</button>
+        
+        </form>
+
+    </main>
+    </body>
+</html>

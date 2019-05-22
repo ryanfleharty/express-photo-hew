@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Edit Users</h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/photo">Photos</a>
+                    <a href="/user">Users</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <form action="/photo/<%= photoOnTemplate._id%>?_method=PUT" method="POST">
+        User: <select name="userId">
+    <% for (let i = 0; i < userOnTemplate.length; i++) {%>
+      <option value="<%=userOnTemplate[i]._id%>"><%=userOnTemplate[i].username%>
+      </option>
+
+      <%}%>
+    </select><br/>
+
+    NEW URL: <input type="text" name="url" value="<%=photoOnTemplate.url%>">
+    NEW TITLE: <input type="text" name="title" value="<%=photoOnTemplate.title%>">
+    <input type="submit">
+</form>
+
+
+</body>
+</html>

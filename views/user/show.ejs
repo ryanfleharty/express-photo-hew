@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>USER SHOW</title>
+</head>
+<body>
+        <h1>Welcome to the user show page</h1>
+    <a href="/">GO HOME</a>
+    <a href="/user">Go back to User Index</a>
+
+    
+    <h1>Here is the username: <br>
+         <%= user.username %></h1>
+
+         <h1>Here is the password: <br>
+            <%= user.password %></h1>
+
+
+
+            <a href="/user/<%=user._id%>/edit">Edit</a>
+    
+    <section>
+        <form action="/user/<%=user._id%>?_method=DELETE" method="POST">
+          <button type="submit">Delete</button>
+        </form>
+      </section>
+</body>
+</html>
+
+
+

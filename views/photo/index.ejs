@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <header>
+            <h1>Welcome to the Photo page</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/user">Users</a>
+                        <a href="/photo">Photos</a>
+                        <a href='/photo/new'>Create a new photo</a>
+                        <h2>List of Photos</h2>
+                        <ul>
+                          <% for(let i = 0; i < photoz.length; i++){ %>
+                            <li>
+                              <a href="/photo/<%=photoz[i]._id%>"><img src="<%=photoz[i].url%>"</a>
+                            </li>
+                          <% } %>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>
