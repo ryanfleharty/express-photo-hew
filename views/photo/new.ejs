@@ -6,11 +6,11 @@
     </head>
     <body>
         <header>
-            <h1>New Usernames</h1>
+            <h1>New Photos</h1>
             <nav>
                 <ul>
                     <li>
-                        <a href="/usernames">username</a>
+                        <a href="/photo">Photos</a>
                     </li>
                 
                 </ul>
@@ -18,9 +18,20 @@
         </header>
 
     <main>
+
         <form action="/photo" method="POST">
-        Username: <input type="text" name="username" />
-        url: <input type="text" name="url" />
+            <select name="username">
+                    <% for (let i = 0; i < userOnTemplate.length; i++) { %>
+          
+                      <option value="<%=userOnTemplate[i]._id%>"><%=userOnTemplate[i].username%></option>
+          
+                    <%}%>
+          
+                  </select><br/>
+
+
+     
+        Photo url: <input type="text" name="url" />
         Title: <input type="text" name="title" />
         <button type="submit">Submit</button>
         
