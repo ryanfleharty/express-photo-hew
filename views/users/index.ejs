@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Users page</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="/user">Users</a><br>
+                <a href='/user/new'>Create a New User</a><br>
+
+                <a href="/photo">Photos</a><br>
+             
+                <h2>List of Users</h2>
+                <ul>
+                  <% for(let i = 0; i < user.length; i++){ %>
+                    <li>
+                      <a href="/user/<%=user[i]._id%>"><%=user[i].username%></a>
+                      
+                    </li>
+                  <% } %>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+</body>
+</html>
