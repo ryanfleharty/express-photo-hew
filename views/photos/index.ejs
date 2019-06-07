@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to the Photo App!</h1>
+    <a href = "/photos/new">Upload A New Photo</a>
+        <ul>
+        <% for(let i = 0; i < photo.length; i++ ){ %>
+            <li>
+        <a href="/photos/<%=photo[i]._id%>"><%=photo.description %></a><br>
+        <img src = "<%=photo.url%>"><br>
+                <a href="/photos/<%=photo[i]._id%>/edit"><button>Edit</button></a>
+                <form action="/photos/<%=photo[i]._id%>?_method=DELETE" method="POST">
+                    <button>Remove</button>
+                </form>
+            </li>
+        </ul>
+   <% } %>
+
+</body>
+</html>

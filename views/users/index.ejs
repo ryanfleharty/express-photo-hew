@@ -8,22 +8,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Users page</h1>
+    <h1>Welcome to the Users page</h1>
     <nav>
         <ul>
             <li>
-                <a href="/user">Users</a><br>
-                <a href='/user/new'>Create a New User</a><br>
+                <a href='/users/new'>Create a New User</a><br>
 
-                <a href="/photo">Photos</a><br>
-             
-                <h2>List of Users</h2>
                 <ul>
                   <% for(let i = 0; i < user.length; i++){ %>
                     <li>
-                      <a href="/user/<%=user[i]._id%>"><%=user[i].username%></a>
-                      
+                      <a href="/users/<%=user[i]._id%>"><%=user[i].username%></a>
+                      <form action = "/users/<%=user[i]._id%>/edit" method = "GET">
+                        <button type = "submit">Update Information</button>
+                    </form>
                     </li>
+                    
                   <% } %>
                 </ul>
             </li>

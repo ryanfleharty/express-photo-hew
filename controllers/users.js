@@ -1,89 +1,99 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/users');
+const Photo = require('../models/photos');
+const User = require('../models/user');
 
 
-
-
-router.get ('/new', (req, res) =>{
-	res.render('new.ejs')	
-
-})
- // INDEX ROUTE
-
-router.get ('/', (req, res)=>{
-	Users.find{}, (err, allUsers)=>{
-	   if(err){
-	   	console.log(err)
-	   	res.send(err)
-	   }else{
-	   	comsole.log(allUsers)
-	   	res.render('index.ejs', {user: allUsers});
-	   }
-     }
+// INDEX ROUTE
+router.get('/', (req, res)=>{
+  User.find({}, (err, allUsers) => {
+      if(err){
+          res.send(err)
+      }else{
+          res.render('users/index.ejs', {
+            user: allUsers
+          })
+      }
+  })
 });
+
 // NEW ROUTE
-
-router.post('/', (req, res) => {
-    User.create(req.body, (err, madeUser) =>{
-        if(err){
-            console.log(err); 
-            res.send(err);
-        } else {
-            console.log (madeUser);
-            res.redirect('/users')
-        }
-    })
+router.get('/new', (req, res) => {
+  res.render('users/new.ejs')
 });
+
+
+// CREATE ROUTE
+router.post('/', (req, res) => {
+  User.create(req.body, (err, newUser) => {
+      if(err){
+          res.send(err)
+      }else{
+          res.redirect('/users')
+      }
+  })
+})
 
 // SHOW ROUTE
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id)
+  .populate('photos')
+  .exec((err, foundUser)=>{
+      if(err){
+          res.send(err)
+      }else{
+          res.render('users/show.ejs', {
+            user: foundUser
+          })
+      }
+  })
+});
 
-router.get('/:id', (req, res) =>{
-	User.findById(req.params.id, (err, foundUser) =>{
-		if(err){
-			console.log(err);
-		} else {
-			res.render('show.ejs', {user: foundUser})
-		}
-	})
+
+// EDIT ROUTE
+router.get('/:id/edit', (req, res) => {
+  User.findById(req.params.id, (err, editUser) => {
+      if(err){
+          console.log(err)
+      }else{
+          console.log(editUser),
+          res.render('users/edit.ejs', {
+            user: editUser
+          })
+      }
+  })
+  
 });
 
 // UPDATE ROUTE
-
 router.put('/:id', (req, res)=>{
-	User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser)=>{
-		if(err){
-			console.log(err);
-		} else {
-			console.log(updatedUser);
-			res.redirect('/users', {user: updatedUser})
-		}
-	})
-})
+    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser)=>{
+      if(err){
+        res.send(err);
+      } else {
+        res.redirect('/users');
+      }
+    });
+  });
 
 // DELETE ROUTE
-
-
-router.delete('/:id', (req, res) =>{
-	User.findByIdAndDelete(req.params.id, (err, deletedUser)=>{
-		if(err){
-			console.log(err);
-			res.send(err);
-		} else {
-			console.log(deletedUser);
-			res.redirect('/users')
-		}
-	})
-})
-
-
-
-
-
-
-
-
-
+router.delete('/:id', (req, res) => {
+  User.findByIdAndDelete(req.params.id, (err, deletedUser) => {
+      if(err){
+          console.log(err)
+      }else{
+          Photo.deleteMany({
+              _id: {
+                  $in: deletedUser.photos     // maybe change the $in ?
+              }
+          }, (err, data)=>{
+              console.log(data, 'data');
+              res.redirect('/users')
+          })
+          
+      }
+  })
+});
 
 
 module.exports = router;
