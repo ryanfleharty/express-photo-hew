@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+	   <H1>Edit Photo Here</H1>
+       <form action="/photos/<%=photo._id%>?_method=PUT" method="POST">
+        By: <select name="userId">
+        <% for (let i = 0; i < user.length; i++){%>
+            <option value="<%=user[i]._id%>"><%=user[i].username%></option>
+        <%}%>
+    Img: <input type="text" name="url" value="<%=photo.url%>">
+    Caption: <input type="text" name="description" value="<%=photo.description%>">
+    <button type='submit'>Submit</button>
+    </form>
+    
+    
+</body>
+</html>
